@@ -1,6 +1,11 @@
 // Cadastro.js
 import React, { Component } from 'react';
-import './Cadastro.css'; // Importe o arquivo de estilos CSS
+import './Global.css'; 
+import Logo from '../img/logo.png'
+import Exibicao from '../img/exibição.jpg'
+import { Link } from 'react-router-dom';
+
+
 
 class Cadastro extends Component {
   constructor(props) {
@@ -35,7 +40,8 @@ class Cadastro extends Component {
               <input className="inputs input-senha" type="password" placeholder="CONFIRME SUA SENHA" required />
               <div className="div-texto">
                 <p className="p-login">JÁ POSSUI CADASTRO?</p>
-                <a className="link-cadastro" href="login.html">Login!</a>
+                <a className="link-cadastro" href="/login">Login!</a>
+
               </div>
               <div className="div-login-com">
                 <button className="button-login-cadastro" type="submit">CADASTRAR</button>
@@ -45,18 +51,18 @@ class Cadastro extends Component {
           <aside className="aside-cadastro">
             <div className="div-logo div-logo-cadastro">
               <a href="index.html">
-                <img className="img-logo" src="assets/logo.png" alt="logo-lifeTidy" />
+                <img className="img-logo" src={Logo} alt="logo-lifeTidy" />
               </a>
             </div>
             <div className="div-recados-cadastro">
               <p className="p-cadastro">Viva de forma organizada,
                 torne o seu dia a dia mais produtivo. <br />
-                <br /> A organização é a chave para a
+                <br /> A organização é a chave para a k
                 produtividade.
               </p>
             </div>
             <div className="div-img-exibição">
-              <img className="img-exibição" src="assets/exibição.jpg" alt="Imagem de Exibição" />
+              <img className="img-exibição" src={Exibicao} alt="Imagem de Exibição" />
             </div>
           </aside>
         </div>

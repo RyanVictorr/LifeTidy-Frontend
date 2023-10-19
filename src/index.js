@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import HomePage from './components/pages/HomePage';
-
+import Inicio from './components/pages/Inicio';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HomePage />
+    <Inicio/>
    
   </React.StrictMode>
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Global.css'; 
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Logo from '../img/logo.png'
 import imgLandingPage from '../img/img-landingPage.png';
 import imgAdicionar from '../img/adicionar.png';
@@ -15,7 +15,7 @@ import imgInformaticoDeRendimento from '../img/INFORMATICO DE RENDIMENTO.png';
 import imgAdicionarMarcador from '../img/ADICIONAR MARCADOR.png';
 
 
-function App() {
+function Inicio() {
   return (
     <Router>
     <div className="body-tela-apresentacao">
@@ -213,4 +213,4 @@ function App() {
   );
 }
 
-export default App;
+export default Inicio;

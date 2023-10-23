@@ -396,7 +396,7 @@ body {
   margin: 0 1.2em 0 0;
   width: 17em;
   background-color: #FFFFFF;
- 
+  background-image: url(../img/search.png);
   width: 50%;
 }
 

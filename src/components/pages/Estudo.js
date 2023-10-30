@@ -3,6 +3,8 @@
 import Header from '../Header';
 import 'font-awesome/css/font-awesome.min.css';
 import Menu from '../Menu';
+import { FaPlus } from 'react-icons/fa';
+import { FaThList } from 'react-icons/fa';
 
 
 function Estudo() {
@@ -19,10 +21,10 @@ function Estudo() {
       <main className="main-tela-principal">
         <div className="div-container-buttons-adicao">
           <a className="links-buttons-adicao links-buttons-adicao-marcador">
-            <i className="fas fa-plus"></i> ADICIONAR MARCADOR
+          <FaPlus/> ADICIONAR MARCADOR
           </a>
           <a className="links-buttons-adicao">
-            <i className="fa fa-th-list"></i> TODOS OS MARCADORES
+            <FaThList/> TODOS OS MARCADORES
           </a>
         </div>
       </main>

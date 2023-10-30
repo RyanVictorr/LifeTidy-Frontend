@@ -565,11 +565,12 @@ body {
   cursor: pointer;
 }
 
-@media (max-height:800px) {
+@media (max-height: 800px) {
   .nav-lateral {
-      height: 100%;
+    height: 100vh; /* Definir a altura para ocupar 100% da altura da tela */
+    display: flex; /* Utilize flexbox para posicionar os elementos internos */
+    flex-direction: column; /* Organizar os itens de cima para baixo */
   }
-
   .side-bar {
       height: 100%;
   }

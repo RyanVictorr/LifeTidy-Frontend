@@ -147,8 +147,9 @@ export const Link = styled.a`
 `;
 
 export const ImageLogo = styled.img`
-  width: 85%;
   display: flex;
+    max-width: 71%;
+    margin-bottom: 0.5em;
 `;
 
 export const ContainerRecados = styled.div`

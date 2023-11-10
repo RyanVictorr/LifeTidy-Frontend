@@ -73,6 +73,8 @@ const App = () => {
             <ContainerRecados>
               <PCadastro>
                 Viva de forma organizada, torne o seu dia a dia mais produtivo.
+              </PCadastro>
+              <PCadastro>
                 A organização é a chave para a produtividade.
               </PCadastro>
             </ContainerRecados>

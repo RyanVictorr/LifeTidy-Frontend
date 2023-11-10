@@ -87,3 +87,20 @@ export const ContainerText = styled.div`
   justify-content: space-evenly;
   padding-top: 15px;
 `;
+export const PSenha = styled.p`
+font-size: 14px;
+font-weight: 700;
+margin-right: 5px;
+font-size: 13px;
+margin: 0.5em;
+
+`;
+export const LinkSenha = styled.a`
+color: #5F98B4;
+text-decoration: none;
+cursor: pointer;
+&:hover{
+  color: #0d4766;
+  text-decoration: underline;
+}
+`;

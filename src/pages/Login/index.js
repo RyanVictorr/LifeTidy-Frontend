@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
-import { AppBody, Main, Form, ContainerLogo, Link, ImageLogo, ContainerInputs, Input, ContainerText, } from "./styles";
+import { AppBody, Main, Form, ContainerLogo, Link, ImageLogo, ContainerInputs, Input, ContainerText, PSenha, LinkSenha, } from "./styles";
 
 const App = () => {
   const navigate = useNavigate();
@@ -21,9 +21,9 @@ const App = () => {
             <Input type="password" placeholder="SENHA" required />
           </ContainerInputs>
           <ContainerText>
-            <PLogin>
+            <PSenha>
               ESQUECEU A SENHA?
-            </PLogin>
+            </PSenha>
             <LinkSenha onClick={() => navigate("/senha")}> 
               Recuperar
             </LinkSenha>

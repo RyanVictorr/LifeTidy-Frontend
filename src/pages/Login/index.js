@@ -21,8 +21,12 @@ const App = () => {
             <Input type="password" placeholder="SENHA" required />
           </ContainerInputs>
           <ContainerText>
-            
-
+            <PLogin>
+              ESQUECEU A SENHA?
+            </PLogin>
+            <LinkSenha onClick={() => navigate("/senha")}> 
+              Recuperar
+            </LinkSenha>
           </ContainerText>
         </Form>
       </Main>

@@ -21,7 +21,9 @@ const App = () => {
             <Input type="password" placeholder="SENHA" required />
           </ContainerInputs>
           <ContainerText>
-            
+            <PLogin>
+            ESQUECEU A SENHA?
+            </PLogin>
 
           </ContainerText>
         </Form>

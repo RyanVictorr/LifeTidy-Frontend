@@ -1,17 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import Inicio from './components/pages/Home';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Inicio/>
-   
-  </React.StrictMode>
-);
+import React from "react";
+import ReactDOM from "react-dom/client";
+import GlobalStyle from "./styles/globalStyle";
+import Routes from "./routes"
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <>
+    <Routes /> <GlobalStyle />
+  </>
+);

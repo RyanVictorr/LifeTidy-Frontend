@@ -1,0 +1,89 @@
+import styled from "styled-components";
+
+import EmailIcon from "../../assets/email.png";
+import senhaIcon from "../../assets/senha.png";
+
+export const AppBody = styled.div`
+  height: 100%;
+  background-color: #0a3950;
+`;
+
+export const Main = styled.main`
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  padding: 2em 4em 4em 4em;
+  align-items: center;
+
+  @media (max-width: 555px) {
+    padding: 20px;
+  }
+  @media (max-width: 715px) {
+    padding: 2em 1.5em 4em 1.5em;
+  }
+`;
+
+export const ContainerLogo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Link = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+export const ImageLogo = styled.img`
+  width: 85%;
+  display: flex;
+`;
+
+export const ContainerInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const Input = styled.input`
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  margin-top: 15px;
+  font-size: 17px;
+  color: #3c3b3b;
+  background-position: 10px;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  padding-left: 40px;
+  min-width: 308px;
+
+  &[type="email"] {
+    background-image: url(${EmailIcon});
+  }
+
+  &[type="password"] {
+    background-image: url(${senhaIcon});
+  }
+`;
+
+export const ContainerText = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 15px;
+`;

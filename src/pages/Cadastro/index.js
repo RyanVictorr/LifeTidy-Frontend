@@ -60,7 +60,7 @@ const App = () => {
                 <LinkLogin onClick={() => navigate("/login")}>Login!</LinkLogin>
               </ContainerText>
               <ContainerLoginCom>
-                <ButtonCadastro type="submit">CADASTRAR</ButtonCadastro>
+                <ButtonCadastro >CADASTRAR</ButtonCadastro>
               </ContainerLoginCom>
             </Form>
           </Main>

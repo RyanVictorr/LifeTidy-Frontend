@@ -47,8 +47,10 @@ export const Link = styled.a`
 `;
 
 export const ImageLogo = styled.img`
-  width: 85%;
   display: flex;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #3c3b3b4d;
 `;
 
 export const ContainerInputs = styled.div`
@@ -88,19 +90,35 @@ export const ContainerText = styled.div`
   padding-top: 15px;
 `;
 export const PSenha = styled.p`
-font-size: 14px;
-font-weight: 700;
-margin-right: 5px;
-font-size: 13px;
-margin: 0.5em;
-
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 5px;
+  font-size: 13px;
+  margin: 0.5em;
 `;
 export const LinkSenha = styled.a`
-color: #5F98B4;
-text-decoration: none;
-cursor: pointer;
-&:hover{
-  color: #0d4766;
-  text-decoration: underline;
-}
+  color: #5f98b4;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: #0d4766;
+    text-decoration: underline;
+  }
 `;
+
+export const ButtonLogin = styled.button`
+color: #ffffff;
+  background-color: #0a3950;
+  border-radius: 15px;
+  border: none;
+  height: 38px;
+  width: 150px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-size: 17px;
+  cursor: pointer;
+
+  &:hover{
+    opacity: 0.8;
+  }
+`

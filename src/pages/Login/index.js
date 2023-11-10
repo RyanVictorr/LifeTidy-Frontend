@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
-import { AppBody, Main, Form, ContainerLogo, Link, ImageLogo, ContainerInputs, Input, ContainerText, PSenha, LinkSenha, } from "./styles";
+import { AppBody, Main, Form, ContainerLogo, Link, ImageLogo, ContainerInputs, Input, ContainerText, PSenha, LinkSenha, ButtonLogin } from "./styles";
 
 const App = () => {
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ const App = () => {
               Recuperar
             </LinkSenha>
           </ContainerText>
+          <ButtonLogin>LOGIN</ButtonLogin>
         </Form>
       </Main>
     </AppBody>

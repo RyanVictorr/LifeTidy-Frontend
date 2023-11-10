@@ -22,9 +22,11 @@ const App = () => {
           </ContainerInputs>
           <ContainerText>
             <PLogin>
-            ESQUECEU A SENHA?
+              ESQUECEU A SENHA?
             </PLogin>
-
+            <LinkSenha onClick={() => navigate("/senha")}> 
+              Recuperar
+            </LinkSenha>
           </ContainerText>
         </Form>
       </Main>

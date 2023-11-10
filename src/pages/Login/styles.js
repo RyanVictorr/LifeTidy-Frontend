@@ -86,15 +86,17 @@ export const ContainerText = styled.div`
   align-items: center;
   width: 100%;
   justify-content: center;
-  justify-content: space-evenly;
   padding-top: 15px;
+
+  
 `;
-export const PSenha = styled.p`
-  font-size: 14px;
+export const PLogin = styled.p`
+  
   font-weight: 700;
   margin-right: 5px;
   font-size: 13px;
-  margin: 0.5em;
+  
+  
 `;
 export const LinkSenha = styled.a`
   color: #5f98b4;
@@ -121,4 +123,31 @@ color: #ffffff;
   &:hover{
     opacity: 0.8;
   }
-`
+  `;
+  export const ContainerTextBorda = styled.div`
+  border-top: 1px solid #3C3B3B4D;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    
+  `;
+  export const PInscrevaSe = styled.p`
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 5px;
+  margin-top: 15px;
+  
+`;
+export const LinkInscrevaSe = styled.a`
+  color: #5f98b4;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 15px;
+  &:hover {
+    color: #0d4766;
+    text-decoration: underline;
+    
+  }
+`;
+

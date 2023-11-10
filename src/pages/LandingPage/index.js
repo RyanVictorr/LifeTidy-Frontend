@@ -243,7 +243,7 @@ const App = () => {
           </ContainerInformativoRendimento>
 
           <ContainerMarcadores>
-            <H2Marcadores MarcadorTitulo>
+            <H2Marcadores marcadortitulo>
               ADICIONE MARCADORES E GERÊNCIE SUAS TAREFAS!
             </H2Marcadores>
             <DivTodasInformacoes>

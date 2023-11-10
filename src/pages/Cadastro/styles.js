@@ -71,7 +71,7 @@ export const Input = styled.input`
   background-size: 25px;
   padding-left: 40px;
   min-width: 308px;
-  margin-bottom: ${(props) => (props.lastInput ? "15px" : "0")};
+  margin-bottom: ${(props) => (props.$lastinput ? "15px" : "0")};
 
   &[type="text"] {
     background-image: url(${UserIcon});

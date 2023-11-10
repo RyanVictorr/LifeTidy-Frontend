@@ -14,6 +14,10 @@ export const ContainerCadastro = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+
+  @media (max-width: 555px) {
+        flex-direction: column;
+        }
 `;
 
 export const SubContainerCadastro = styled.div`
@@ -25,7 +29,7 @@ export const SubContainerCadastro = styled.div`
   max-width: 900px;
 
   @media (max-width: 555px) {
-    flex-direction: column; 
+    flex-direction: column;
   }
 `;
 
@@ -36,6 +40,14 @@ export const Anside = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  @media (max-width: 715px) {
+    margin: 2em 1.5em 4em 0;
+  }
+
+  @media (max-width: 555px) {
+    display: none;
+  }
 `;
 
 export const Form = styled.form`
@@ -46,8 +58,12 @@ export const Form = styled.form`
   padding: 2em 4em 4em 4em;
   align-items: center;
 
+  @media (max-width: 715px) {
+    padding: 2em 1.5em 4em 1.5em;
+  }
+
   @media (max-width: 555px) {
-    padding: 0.5em 1.5em 4em 1.5em;
+    padding: 0.8em 1.5em 4em 1.5em;
   }
 `;
 
@@ -87,6 +103,19 @@ export const Input = styled.input`
   &[type="tel"] {
     background-image: url(${TelefoneIcon});
   }
+
+  @media (max-width: 555px) {
+    min-width: 303px;
+    &::placeholder{
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 353px) {
+    max-width: 225px;
+    height: 30px;
+    min-width: 0;
+  }
 `;
 
 export const ContainerText = styled.div`
@@ -108,6 +137,10 @@ export const LinkLogin = styled.a`
   color: #5f98b4;
   text-decoration: none;
   cursor: pointer;
+
+  &:hover{
+    color: #295971;
+  }
 `;
 
 export const ContainerLoginCom = styled.div`
@@ -128,7 +161,7 @@ export const ButtonCadastro = styled.button`
   font-size: 17px;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     opacity: 0.8;
   }
 `;
@@ -137,6 +170,11 @@ export const ContainerLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 555px) {
+    width: 85%;
+    padding-bottom: 15px;
+  }
 `;
 
 export const Link = styled.a`
@@ -148,8 +186,8 @@ export const Link = styled.a`
 
 export const ImageLogo = styled.img`
   display: flex;
-    max-width: 71%;
-    margin-bottom: 0.5em;
+  max-width: 71%;
+  margin-bottom: 0.5em;
 `;
 
 export const ContainerRecados = styled.div`

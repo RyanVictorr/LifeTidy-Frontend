@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Importe o Axios
+import axios from "axios";
 
 import logo from "../../assets/logo.png";
 import ImageExibicao from "../../assets/exibição.jpg";
@@ -31,7 +31,6 @@ import {
 const App = () => {
   const navigate = useNavigate();
 
-  // Use o estado para controlar os valores do formulário
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -40,7 +39,6 @@ const App = () => {
     telefone: "",
   });
 
-  // Função para lidar com a alteração nos campos do formulário
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -48,20 +46,17 @@ const App = () => {
     });
   };
 
-  // Função para lidar com o envio do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { nome, email, senha, confirmarSenha, telefone } = formData;
-
-    // Verifica se as senhas são iguais
     if (senha !== confirmarSenha) {
-      console.error("As senhas não coincidem.");
+      alert("As senhas não coincidem.");
       return;
     }
 
     try {
-      // Faça a chamada para o backend usando o Axios
+      //Chamada para o backend
       const response = await axios.post("http://localhost:3001/usuarios", {
         nome,
         email,
@@ -71,7 +66,7 @@ const App = () => {
 
       if (response.status === 201) {
         console.log("Usuário cadastrado com sucesso");
-        // Adicione aqui qualquer lógica adicional após o cadastro bem-sucedido, se necessário
+        navigate("/login")
       } else {
         console.error("Erro ao cadastrar o usuário");
       }

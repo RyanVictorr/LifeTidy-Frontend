@@ -29,8 +29,7 @@ padding: 1em;
 export const ContainerInput =styled.div`
 display: flex;
 flex-direction: column;
-
-margin-top:10px;
+margin-top:15px;
 `;
 
 

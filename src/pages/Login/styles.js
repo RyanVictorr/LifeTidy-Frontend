@@ -71,7 +71,7 @@ export const Input = styled.input`
   background-size: 25px;
   padding-left: 40px;
   min-width: 308px;
-
+  
   &[type="email"] {
     background-image: url(${EmailIcon});
   }
@@ -87,16 +87,11 @@ export const ContainerText = styled.div`
   width: 100%;
   justify-content: center;
   padding-top: 15px;
-
-  
 `;
 export const PLogin = styled.p`
-  
   font-weight: 700;
   margin-right: 5px;
   font-size: 13px;
-  
-  
 `;
 export const LinkSenha = styled.a`
   color: #5f98b4;
@@ -109,7 +104,7 @@ export const LinkSenha = styled.a`
 `;
 
 export const ButtonLogin = styled.button`
-color: #ffffff;
+  color: #ffffff;
   background-color: #0a3950;
   border-radius: 15px;
   border: none;
@@ -120,24 +115,22 @@ color: #ffffff;
   font-size: 17px;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     opacity: 0.8;
   }
-  `;
-  export const ContainerTextBorda = styled.div`
-  border-top: 1px solid #3C3B3B4D;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    
-  `;
-  export const PInscrevaSe = styled.p`
+`;
+export const ContainerTextBorda = styled.div`
+  border-top: 1px solid #3c3b3b4d;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+`;
+export const PInscrevaSe = styled.p`
   font-size: 14px;
   font-weight: 700;
   margin-right: 5px;
   margin-top: 15px;
-  
 `;
 export const LinkInscrevaSe = styled.a`
   color: #5f98b4;
@@ -147,7 +140,9 @@ export const LinkInscrevaSe = styled.a`
   &:hover {
     color: #0d4766;
     text-decoration: underline;
-    
   }
 `;
 
+export const ErrorText = styled.p`
+  color: red;
+`;

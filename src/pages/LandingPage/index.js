@@ -109,7 +109,7 @@ const App = () => {
             <H2Informacoes id="pontoOne">
               COM LIFETIDY VOCÊ PODE FAZER MAIS!
             </H2Informacoes>
-            <DivTodasInformacoes primary>
+            <DivTodasInformacoes $primary>
               <DivInformacoesLeftRight>
                 <DivInformacoesComIcones>
                   <IconsApresentacao
@@ -243,7 +243,7 @@ const App = () => {
           </ContainerInformativoRendimento>
 
           <ContainerMarcadores>
-            <H2Marcadores marcadortitulo>
+            <H2Marcadores $marcadortitulo>
               ADICIONE MARCADORES E GERÊNCIE SUAS TAREFAS!
             </H2Marcadores>
             <DivTodasInformacoes>

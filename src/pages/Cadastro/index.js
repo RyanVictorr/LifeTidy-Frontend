@@ -32,7 +32,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    nome: "",
+    nome_usuario: "",
     email: "",
     senha: "",
     confirmarSenha: "",
@@ -49,7 +49,7 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { nome, email, senha, confirmarSenha, telefone } = formData;
+    const { nome_usuario, email, senha, confirmarSenha, telefone } = formData;
     if (senha !== confirmarSenha) {
       alert("As senhas não coincidem.");
       return;
@@ -57,11 +57,11 @@ const App = () => {
 
     try {
       //Chamada para o backend
-      const response = await axios.post("http://localhost:3001/usuarios", {
-        nome,
+      const response = await axios.post("http://localhost:4000/usuarios", {
+        nome_usuario,
         email,
         senha,
-        telefone,
+        telefone
       });
 
       if (response.status === 201) {
@@ -87,8 +87,8 @@ const App = () => {
                 placeholder="NOME COMPLETO"
                 required
                 autoFocus
-                name="nome"
-                value={formData.nome}
+                name="nome_usuario"
+                value={formData.nome_usuario}
                 onChange={handleChange}
               />
               <Input

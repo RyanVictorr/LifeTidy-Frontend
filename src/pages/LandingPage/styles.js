@@ -162,7 +162,7 @@ export const DivTodasInformacoes = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: ${(props) => (props.primary ? "center" : "space-evenly")};
+  justify-content: ${(props) => (props.$primary ? "center" : "space-evenly")};
 `;
 
 export const DivInformacoesComIcones = styled.div`
@@ -267,10 +267,10 @@ export const DivTextsInformacoesListasMarcadores = styled(
 
 export const H2Marcadores = styled.h2`
   margin-top: 0;
-  text-align: ${(props) => (props.marcadortitulo ? "center" : "none")};
-  color: ${(props) => (props.marcadortitulo ? "#FFFFFF" : "#000")};
-  font-size: ${(props) => (props.marcadortitulo ? "27px" : "")};
-  margin: ${(props) => (props.marcadortitulo ? "15px" : "")};
+  text-align: ${(props) => (props.$marcadortitulo ? "center" : "none")};
+  color: ${(props) => (props.$marcadortitulo ? "#FFFFFF" : "#000")};
+  font-size: ${(props) => (props.$marcadortitulo ? "27px" : "")};
+  margin: ${(props) => (props.$marcadortitulo ? "15px" : "")};
 `;
 
 export const PMarcadores = styled.p`

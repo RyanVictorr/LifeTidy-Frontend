@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import {
     AppBody, 
-    ContainerCadastro, 
     ContainerCadastroPai,
     Main, Form, 
     H2Cadastro,
@@ -19,7 +18,7 @@ const App = () => {
     return (
     <AppBody> 
         <ContainerCadastroPai>
-            <ContainerCadastro>
+          
                 <Main>
                     <Form>
                         <H2Cadastro>
@@ -34,15 +33,16 @@ const App = () => {
                                 <ButtonRecuperar>RECUPERAR</ButtonRecuperar>
                             </ContainerRecuperar>
                     </Form>
-                </Main>
-                        <ContainerRecuperacao>
+                    <ContainerRecuperacao>
                         <ContainerLogo>
                         <Link onClick={() => navigate("/landingpage")}>
                             <ImageLogo src={logo} alt={"Logo-LifeTidy"} />
                         </Link>
                         </ContainerLogo>
                 </ContainerRecuperacao>
-            </ContainerCadastro>
+                </Main>
+                       
+           
         </ContainerCadastroPai>
     </AppBody> 
     );

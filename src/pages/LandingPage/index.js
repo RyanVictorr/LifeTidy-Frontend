@@ -60,7 +60,7 @@ import {
   StyledLi,
   FooterBottom,
   PFooter,
-  
+  ImageLogoFooter,
 } from "./styles";
 
 const App = () => {
@@ -68,7 +68,7 @@ const App = () => {
 
   return (
     <AppBody>
-      <Header>
+      <Header id="topo">
         <Nav>
           <ContainerNav>
             <ContainerLogo>
@@ -106,7 +106,7 @@ const App = () => {
             />
           </ContainerDivs>
           <DivInformacoes>
-            <H2Informacoes id="pontoOne">
+            <H2Informacoes id="recursos">
               COM LIFETIDY VOCÊ PODE FAZER MAIS!
             </H2Informacoes>
             <DivTodasInformacoes $primary>
@@ -161,7 +161,7 @@ const App = () => {
             <H2Informacoes>
               ADICIONE TAREFAS DE MANEIRA FÁCIL E RÁPIDA!
             </H2Informacoes>
-            <DivTodasInformacoes>
+            <DivTodasInformacoes id="recursos">
               <DivTodasInformacoesTarefasLeft>
                 <Ul>
                   <TextsInformacoesListas>
@@ -287,17 +287,19 @@ const App = () => {
         <ContainerFooter>
           <FooterTop>
             <FooterLogo>
-              <ImageLogo src={logo} alt="LifeTidy Logo" />
+              <Link onClick={() => navigate("/landingpage")}>
+                <ImageLogoFooter src={logo} alt="LifeTidy Logo" />
+              </Link>
             </FooterLogo>
             <FooterLinks>
               <StyledUl>
-                <StyledLi onClick={() => navigate("/landingpage")}>
-                  Página Inicial
+                <StyledLi>
+                  <Link href="#topo">Página Inicial</Link>
                 </StyledLi>
-                <StyledLi onClick={() => navigate("/#pontoOne")}>
-                  Recursos
+                <StyledLi>
+                  <Link href="#recursos">Recursos</Link>
                 </StyledLi>
-                <StyledLi onClick={() => navigate("/sobreNois")}>
+                <StyledLi onClick={() => navigate("/sobreNos")}>
                   Sobre Nós
                 </StyledLi>
               </StyledUl>

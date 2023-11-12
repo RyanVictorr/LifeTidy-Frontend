@@ -31,11 +31,26 @@ export const ContainerLogo = styled.div`
   margin-left: 0;
 `;
 
-export const Link = styled.a``;
+export const Link = styled.a`
+cursor: pointer;
+  display: inline-block;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #242424;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  font-weight: bold;
+
+  &:hover {
+    color: #21325a;
+  }
+
+`;
 export const ImageLogo = styled.img`
   width: 100%;
   display: flex;
   cursor: pointer;
+
 `;
 
 export const LinkLandingPage = styled.a`
@@ -52,19 +67,19 @@ export const LinkLandingPage = styled.a`
   &::after {
     content: "";
     position: absolute;
-    bottom: -5px; // Posição ligeiramente abaixo do texto
+    bottom: -5px;
     left: 0;
     width: 0;
-    height: 2px; // Espessura da linha
-    background: #000000; // Cor da linha
+    height: 2px; 
+    background: #000000; 
     transition: width 0.3s ease-in-out;
   }
 
   &:hover {
-    color: #5f98b4; // Mude para a cor que desejar
+    color: #5f98b4;
 
     &::after {
-      width: 100%; // A linha se expande para a largura total do link
+      width: 100%;
     }
   }
   
@@ -81,7 +96,7 @@ export const UniqueLink = styled(LinkLandingPage)`
   border-radius: 25px;
   left: 19px;
   &:hover::after {
-    width: 80%; // A linha se expande para a largura total do link
+    width: 80%; 
     left: 19px;
   }
 
@@ -144,7 +159,6 @@ export const DivInformacoesLeftRight = styled.div`
   &:first-of-type {
     border-right: 3px solid #ffffff;
 
-    /* Media query para remover a borda na largura de 912px ou menos */
     @media (max-width: 912px) {
       border-right: none;
     }
@@ -295,8 +309,15 @@ export const FooterTop = styled.div`
 `;
 
 export const FooterLogo = styled.div`
-  margin: 5px;
   width: 12%;
+`;
+
+export const ImageLogoFooter = styled.img`
+ min-width: 100px;
+    width: 100%;
+    height: 100%;
+    margin: 11px 0 0 11px;
+    cursor: pointer;
 `;
 
 export const FooterLinks = styled.div``;

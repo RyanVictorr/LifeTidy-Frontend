@@ -20,6 +20,14 @@ import {
   StyledLi,
   FooterBottom,
   PFooter,
+  ImageLogoFooter,
+  Header,
+  Nav,
+  ContainerNav,
+  LinkLandingPage,
+  UniqueLink,
+  ImageLogoH,
+  ContainerLogoH,
 } from "./styles"; // Importando os componentes do arquivo de estilos
 
 const App = () => {
@@ -27,8 +35,30 @@ const App = () => {
 
   return (
     <AppBody>
+      <Header id="topo">
+        <Nav>
+          <ContainerNav>
+            <ContainerLogoH>
+              <Link onClick={() => navigate("/landingpage")}>
+                <ImageLogoH src={logo} alt={"Logo-LifeTidy"} />
+              </Link>
+            </ContainerLogoH>
+            <LinkLandingPage onClick={() => navigate("/LandingPage")}>
+            Página Inicial
+            </LinkLandingPage>
+          </ContainerNav>
+
+          <ContainerNav>
+            <LinkLandingPage onClick={() => navigate("/cadastro")}>
+              CADASTRO
+            </LinkLandingPage>
+            <UniqueLink onClick={() => navigate("/login")}>LOGIN</UniqueLink>
+          </ContainerNav>
+        </Nav>
+      </Header>
+
       <Main>
-        <ContainerLogo>
+        <ContainerLogo id="topo">
           <Link onClick={() => navigate("/landingpage")}>
             <ImageLogo src={logo} alt={"Logo-LifeTidy"} />
           </Link>
@@ -64,18 +94,20 @@ const App = () => {
         <ContainerFooter>
           <FooterTop>
             <FooterLogo>
-              <ImageLogo src={logo} alt="LifeTidy Logo" />
+              <Link onClick={() => navigate("/landingpage")}>
+                <ImageLogoFooter src={logo} alt="LifeTidy Logo" />
+              </Link>
             </FooterLogo>
             <FooterLinks>
               <StyledUl>
                 <StyledLi onClick={() => navigate("/landingpage")}>
                   Página Inicial
                 </StyledLi>
-                <StyledLi onClick={() => navigate("/#pontoOne")}>
+                <StyledLi onClick={() => navigate("/landingpage")}>
                   Recursos
                 </StyledLi>
-                <StyledLi onClick={() => navigate("/sobreNois")}>
-                  Sobre Nós
+                <StyledLi>
+                  <Link href="#topo">Sobre Nós</Link>
                 </StyledLi>
               </StyledUl>
             </FooterLinks>

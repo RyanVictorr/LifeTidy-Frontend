@@ -13,17 +13,15 @@ export const ContainerCadastroPai  = styled.div`
   justify-content: center;
   min-height: 100vh;
 `;
-export const ContainerCadastro  = styled.div`
-  display: flex;
-  background-color: #D9D9D9;
-  border-radius: 15px;
-  margin: 2em 4em;
-  justify-content: space-around;
-  max-width: 900px;
-`;
 export const Main  = styled.main`
-
+display: flex;
+background-color: #D9D9D9;
+border-radius: 15px;
+margin: 2em 4em;
+justify-content: space-around;
+max-width: 900px;
 padding: 1em;
+height:54vh;
 
 `;
 export const ContainerInput =styled.div`

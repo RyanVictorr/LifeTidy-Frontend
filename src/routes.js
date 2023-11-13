@@ -8,6 +8,7 @@ import Home from './pages/Home/'
 import Login from './pages/Login'
 import Senha from './pages/Senha'
 import Header from './components/HeaderPrincipal'
+import Modal from './components/ModalTarefa'
 
 function MyRoutes() {
 
@@ -21,6 +22,7 @@ function MyRoutes() {
                 <Route path='/senha' element={<Senha/>} />
                 <Route path='/home' element={<Home/>} />
                 <Route path='/header' element={<Header/>} />
+                <Route path='/modal' element={<Modal/>} />
             </Routes>
 
         </Router>)

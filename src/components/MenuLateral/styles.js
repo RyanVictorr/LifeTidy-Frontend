@@ -19,7 +19,7 @@ export const SideBar = styled.div`
   background-color: #031E2C;
   box-shadow: 3px 2px 11px 2px #031E2C;
 
-  ${props => props.active && css`
+  ${props => props.$active && css`
     left: 0;
   `}
 `;

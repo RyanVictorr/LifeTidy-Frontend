@@ -41,7 +41,7 @@ const Sidebar = () => {
           <MenuButton onClick={toggleSidebar}>
             <StyledIcon icon={faBars} />
           </MenuButton>
-          <SideBar active={isActive ? "true" : undefined}>
+          <SideBar $active={isActive ? "true" : undefined}>
             <CloseButton onClick={toggleSidebar}>
               <StyledIcon icon={faTimes} />
             </CloseButton>

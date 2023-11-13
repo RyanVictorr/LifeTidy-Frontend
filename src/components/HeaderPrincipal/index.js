@@ -14,19 +14,22 @@ import {
     ContainerPerfil,LinkMenu,
     Pnome,ContainerImgPerfil,
     LinkPerfil,ImagePerfil,
-    ContainerSubMenu} from "./styles";
+    ContainerSubMenu,} from "./styles";
 
 const Header = () => {
     const navigate = useNavigate();
+  const [showSubMenu, setShowSubMenu] = useState(false);
+
+  const toggleSubMenu = () => {
+    setShowSubMenu(!showSubMenu);
+  };
     return(
        
             <ContainerHeader>
                 <ContainerLogo>
                     <Link onClick={() => navigate("/landingpage")}>
                         <ContainerImg>
-                        
                         </ContainerImg>
-
                     </Link>
                 </ContainerLogo>
                 <ContainerButtons>
@@ -40,13 +43,13 @@ const Header = () => {
                 <ContainerPerfil>
                     <Pnome>Nome Usuario</Pnome>
                     <ContainerImgPerfil>
-                        <LinkPerfil>
-                        <ImagePerfil src={perfil} alt={"Imagem-perfil"} />
+                        <LinkPerfil onClick={toggleSubMenu}>
+                            <ImagePerfil src={perfil} alt={"Imagem-perfil"} />
                         </LinkPerfil>
-                        <ContainerSubMenu>
+                        <ContainerSubMenu $active={showSubMenu ? "true" : undefined}>
                             <LinkMenu>EDITAR PERFIL</LinkMenu>
                             <LinkMenu>CONFIGURAÇÕES</LinkMenu>
-                            <LinkMenu onClick={() => navigate("/landingpage")}>SAIR</LinkMenu>
+                            <LinkMenu $lastLinkPerfil onClick={() => navigate("/landingpage")}>SAIR</LinkMenu>
                         </ContainerSubMenu>
                     </ContainerImgPerfil>
                 </ContainerPerfil>

@@ -16,7 +16,7 @@ import {
     LinkPerfil,ImagePerfil,
     ContainerSubMenu} from "./styles";
 
-const App = () => {
+const Header = () => {
     const navigate = useNavigate();
     return(
        
@@ -55,4 +55,4 @@ const App = () => {
     );
 }
  
-export default App;
+export default Header;

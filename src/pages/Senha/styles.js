@@ -117,6 +117,9 @@ margin-bottom: 15px;
 margin-top: 10px;
 font-size: 17px;
 cursor: pointer;
+&:hover {
+  opacity: 0.8;
+}
 `;
 export const ContainerRecuperacao = styled.aside`
 margin: 2em 4em 4em 0;

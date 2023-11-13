@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import SobreNos from './pages/SobreNos'
 import Cadastro from './pages/Cadastro'
-//import Home from './pages/Home/'
+import Home from './pages/Home/'
 import Login from './pages/Login'
 import Senha from './pages/Senha'
 
@@ -18,6 +18,7 @@ function MyRoutes() {
                 <Route path='/cadastro' element={<Cadastro/>}/>
                 <Route path='/login' element={<Login/>} />
                 <Route path='/senha' element={<Senha/>} />
+                <Route path='/home' element={<Home/>} />
             </Routes>
 
         </Router>)

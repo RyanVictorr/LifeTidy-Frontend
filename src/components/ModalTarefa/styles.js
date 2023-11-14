@@ -48,19 +48,43 @@ font-size: 30px;
 cursor: pointer
 `;
 export const FormDetalhesTarefas = styled.form`
-  /* Adicione estilos para o FormDetalhesTarefas aqui */
+background-color: #FFF;
+padding-bottom: 2em;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+padding-right: 10px;
 `;
 
 export const ContainerCategoria = styled.div`
-  /* Adicione estilos para o ContainerCategoria aqui */
+padding: 1em 0 0.7em 1em;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
 `;
 
 export const H4InfomacoesInputs = styled.h4`
-  /* Adicione estilos para o H4InfomacoesInputs aqui */
+margin: 0;
+font-weight: 600;
+font-size: 20px;
+margin-right: 10px;
+min-width: 7em;
 `;
 
 export const SelectInputsWidth = styled.select`
-  /* Adicione estilos para o SelectInputsWidth aqui */
+width: 29.5em;
+`;
+export const InputSelect = styled.input`
+background-color: #D9D9D9;
+border: none;
+border-radius: 25px;
+font-weight: 600;
+font-size: 16px;
+text-align: center;
+width: 10em;
+height: 1.8em;
+margin-right: 3px;
+`;
+export const TextArea = styled.textarea`
 `;
 
 export const ContainerImportancia = styled.div`
@@ -68,27 +92,52 @@ export const ContainerImportancia = styled.div`
 `;
 
 export const ContainerInicio = styled.div`
-  /* Adicione estilos para o ContainerInicio aqui */
+padding: 1em 0 0.7em 1em;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
 `;
 
 export const ContainerInicioConclusaoHorario = styled.div`
-  /* Adicione estilos para o ContainerInicioConclusaoHorario aqui */
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+margin-top: 5px;
 `;
 
 export const ContainerConclusao = styled.div`
-  /* Adicione estilos para o ContainerConclusao aqui */
+padding: 1em 0 0.7em 1em;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
 `;
 
 export const ContainerDescricaoTarefa = styled.div`
-  /* Adicione estilos para o ContainerDescricaoTarefa aqui */
+padding: 1em 0 0.7em 1em;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
 `;
 
 export const DivButtonNovaTarefa = styled.div`
-  /* Adicione estilos para o DivButtonNovaTarefa aqui */
+justify-content: center;
+display: flex;
+margin-top: 2em;
 `;
 
 export const ButtonCriarTarefa = styled.button`
-  /* Adicione estilos para o ButtonCriarTarefa aqui */
+height: 2.5em;
+width: 12em;
+border: none;
+border-radius: 25px;
+background-color: #D9D9D9;
+font-size: 16px;
+font-weight: 700;
+cursor: pointer;
+transition: 1.5s ease;
+&:hover{
+  background-color: #9e9e9e;
+}
 `;
 
 // Continue adicionando os exports para os outros elementos...

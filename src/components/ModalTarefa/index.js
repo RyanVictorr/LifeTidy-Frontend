@@ -4,8 +4,8 @@ import {
   ContainerAdicionarTarefa, 
   ContainerH2Tarefa,
   StyledIcon, 
-  H2AdicionarTarefa, 
-  ContainerButtonExit, 
+  H2AdicionarTarefa,InputSelect,
+  TextArea,ContainerButtonExit, 
   FormDetalhesTarefas, 
   ContainerCategoria, 
   H4InfomacoesInputs, 
@@ -52,33 +52,33 @@ const App = () => {
           <ContainerInicio>
             <ContainerInicioConclusaoHorario>
               <H4InfomacoesInputs>INÍCIO</H4InfomacoesInputs>
-              <input className="select-inputs" type="date" />
+              <InputSelect type="date" />
             </ContainerInicioConclusaoHorario>
             <ContainerInicioConclusaoHorario>
-              <H4InfomacoesInputs className="h4-infomacoes-inputs-horario">HORÁRIO</H4InfomacoesInputs>
-              <input className="select-inputs" type="time" />
+              <H4InfomacoesInputs>HORÁRIO</H4InfomacoesInputs>
+              <InputSelect type="time" />
             </ContainerInicioConclusaoHorario>
           </ContainerInicio>
           <ContainerConclusao>
             <ContainerInicioConclusaoHorario>
               <H4InfomacoesInputs>CONCLUSÃO</H4InfomacoesInputs>
-              <input className="select-inputs" type="date" />
+              <InputSelect type="date" />
             </ContainerInicioConclusaoHorario>
             <ContainerInicioConclusaoHorario>
-              <H4InfomacoesInputs className="h4-infomacoes-inputs-horario">HORÁRIO</H4InfomacoesInputs>
-              <input className="select-inputs" type="time" />
+              <H4InfomacoesInputs >HORÁRIO</H4InfomacoesInputs>
+              <InputSelect type="time" />
             </ContainerInicioConclusaoHorario>
           </ContainerConclusao>
           <ContainerDescricaoTarefa>
             <H4InfomacoesInputs>TAREFA</H4InfomacoesInputs>
-            <textarea className="select-inputs  select-inputs-tarefa" type="text"></textarea>
+            <TextArea type="text"></TextArea>
           </ContainerDescricaoTarefa>
           <ContainerDescricaoTarefa>
             <H4InfomacoesInputs>Descrição</H4InfomacoesInputs>
-            <textarea className="select-inputs  select-inputs-tarefa" type="text"></textarea>
+            <TextArea type="text"></TextArea>
           </ContainerDescricaoTarefa>
           <DivButtonNovaTarefa>
-            <ButtonCriarTarefa type="submit" className="button-criar-tarefa">CRIAR TAREFA</ButtonCriarTarefa>
+            <ButtonCriarTarefa type="submit" >CRIAR TAREFA</ButtonCriarTarefa>
           </DivButtonNovaTarefa>
         </FormDetalhesTarefas>
       </ContainerAdicionarTarefa>

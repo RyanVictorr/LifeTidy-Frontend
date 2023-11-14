@@ -23,7 +23,14 @@ const App = () => {
   return (
     <AppBody>
       <Header openModal={openModal} />
+      <ContainerMainPrincial>
       <SideBar />
+      <Main>
+        <ContainerLembrete>
+          <H2TelaInicial>LEMBRETE</H2TelaInicial>
+        </ContainerLembrete>
+      </Main>
+      </ContainerMainPrincial>
       {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
     </AppBody>
   );

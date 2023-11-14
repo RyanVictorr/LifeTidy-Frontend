@@ -1,41 +1,38 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { 
-  Dialog, 
-  ContainerAdicionarTarefa, 
+import React from "react";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import {
+  Dialog,
+  ContainerAdicionarTarefa,
   ContainerH2Tarefa,
-  StyledIcon, 
-  H2AdicionarTarefa,InputSelect,
-  TextArea,ContainerButtonExit, 
-  FormDetalhesTarefas, 
-  ContainerCategoria, 
-  H4InfomacoesInputs, 
-  SelectInputsWidth, 
-  ContainerImportancia, 
-  ContainerInicio, 
-  ContainerInicioConclusaoHorario, 
-  ContainerConclusao, 
-  ContainerDescricaoTarefa, 
-  DivButtonNovaTarefa, 
-  ButtonCriarTarefa } from "./styles";
-  import {
-    faClose,
-    
-  } from "@fortawesome/free-solid-svg-icons";
+  StyledIcon,
+  H2AdicionarTarefa,
+  InputSelect,
+  TextArea,
+  ContainerButtonExit,
+  FormDetalhesTarefas,
+  ContainerCategoria,
+  H4InfomacoesInputs,
+  SelectInputsWidth,
+  ContainerImportancia,
+  ContainerInicio,
+  ContainerInicioConclusaoHorario,
+  ContainerConclusao,
+  ContainerDescricaoTarefa,
+  DivButtonNovaTarefa,
+  ButtonCriarTarefa,
+} from "./styles";
 
-  const Modal = ({ isOpen, closeModal }) => {
-    const navigate = useNavigate();
-    const closeModalAndNavigateHome = () => {
-      closeModal(); // Fechar a modal
-      navigate("/home"); // Navegar para a Home
-    };
+const Modal = ({ isOpen, closeModal }) => {
+  if (!isOpen) {
+    return null;
+  }
   return (
     <Dialog open={isOpen}>
-      <ContainerAdicionarTarefa>
+      <ContainerAdicionarTarefa >
         <ContainerH2Tarefa>
           <H2AdicionarTarefa>ADICIONAR TAREFA</H2AdicionarTarefa>
           <ContainerButtonExit>
-          <StyledIcon icon={faClose}  onClick={closeModalAndNavigateHome}/>
+            <StyledIcon icon={faClose} onClick={closeModal} />
           </ContainerButtonExit>
         </ContainerH2Tarefa>
         <FormDetalhesTarefas>
@@ -71,7 +68,7 @@ import {
               <InputSelect type="date" />
             </ContainerInicioConclusaoHorario>
             <ContainerInicioConclusaoHorario>
-              <H4InfomacoesInputs >HORÁRIO</H4InfomacoesInputs>
+              <H4InfomacoesInputs>HORÁRIO</H4InfomacoesInputs>
               <InputSelect type="time" />
             </ContainerInicioConclusaoHorario>
           </ContainerConclusao>
@@ -80,11 +77,11 @@ import {
             <TextArea type="text"></TextArea>
           </ContainerDescricaoTarefa>
           <ContainerDescricaoTarefa>
-            <H4InfomacoesInputs>Descrição</H4InfomacoesInputs>
+            <H4InfomacoesInputs>DESCRIÇÃO</H4InfomacoesInputs>
             <TextArea type="text"></TextArea>
           </ContainerDescricaoTarefa>
           <DivButtonNovaTarefa>
-            <ButtonCriarTarefa type="submit" >CRIAR TAREFA</ButtonCriarTarefa>
+            <ButtonCriarTarefa type="submit">CRIAR TAREFA</ButtonCriarTarefa>
           </DivButtonNovaTarefa>
         </FormDetalhesTarefas>
       </ContainerAdicionarTarefa>

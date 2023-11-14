@@ -57,7 +57,7 @@ const App = () => {
 
     try {
       //Chamada para o backend
-      const response = await axios.post("http://localhost:4000/usuarios", {
+      const response = await axios.post("http://localhost:4000/usuarios/cadastrar", {
         nome_usuario,
         email,
         senha,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext"; // Importe o contexto de autenticação
 import perfil from "../../assets/perfil.png";
 import Modal from "../ModalTarefa/index.js"
 import { 
@@ -16,7 +17,7 @@ import {
     LinkPerfil,ImagePerfil,
     ContainerSubMenu,} from "./styles";
 
-const Header = () => {
+    const Header = ({ openModal }) => {
 const navigate = useNavigate();
 const [showModal, setShowModal] = useState(false);
 const [showSubMenu, setShowSubMenu] = useState(false);
@@ -26,6 +27,18 @@ const toggleModal = () => {
   };
   const toggleSubMenu = () => {
     setShowSubMenu(!showSubMenu);
+  };
+
+  const { userName } = useAuth(); // Obtenha o nome do usuário do contexto
+
+  const { setToken, setUserName } = useAuth();
+  const handleLogout = () => {
+    // Limpe o token e outras informações de autenticação
+    setToken(null);
+    setUserName(null);
+  
+    // Redirecione o usuário para a página de login
+    navigate("/login");
   };
     return(
        
@@ -39,13 +52,13 @@ const toggleModal = () => {
                 <ContainerButtons>
                     <InputPesquisa type="text" placeholder="PESQUISAR"/>
                     <ContainerButtonsModal>
-                        <ButtonAdicionar  onClick={toggleModal}></ButtonAdicionar>
+                    <ButtonAdicionar onClick={openModal}></ButtonAdicionar>
                         <ButtonAviso></ButtonAviso>
                         <ButtonDesempenho></ButtonDesempenho>
                     </ContainerButtonsModal>
                 </ContainerButtons>
                 <ContainerPerfil>
-                    <Pnome>Nome Usuario</Pnome>
+                    <Pnome>{userName}</Pnome>
                     <ContainerImgPerfil>
                         <LinkPerfil onClick={toggleSubMenu}>
                             <ImagePerfil src={perfil} alt={"Imagem-perfil"} />
@@ -53,7 +66,7 @@ const toggleModal = () => {
                         <ContainerSubMenu $active={showSubMenu ? "true" : undefined}>
                             <LinkMenu>EDITAR PERFIL</LinkMenu>
                             <LinkMenu>CONFIGURAÇÕES</LinkMenu>
-                            <LinkMenu $lastLinkPerfil onClick={() => navigate("/landingpage")}>SAIR</LinkMenu>
+                            <LinkMenu $lastLinkPerfil onClick={handleLogout}>SAIR</LinkMenu>
                         </ContainerSubMenu>
                     </ContainerImgPerfil>
                 </ContainerPerfil>

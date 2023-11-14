@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 
 import logo from "../../assets/logo.png";
@@ -23,15 +24,21 @@ import {
 } from "./styles";
 
 const App = () => {
-  const navigate = useNavigate();
+  // Configuração do Axios
+  const axiosInstance = axios.create({
+    withCredentials: true,
+  });
 
+  // Hooks e estado para controle do formulário e erros
+  const navigate = useNavigate();
+  const { login, setAuthenticatedUser } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     senha: "",
   });
-
   const [error, setError] = useState(null);
 
+  // Função para atualizar o estado do formulário
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -39,26 +46,50 @@ const App = () => {
     });
   };
 
+  // Função para submeter o formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4000/usuarios/login", {
-        email: formData.email,
-        senha: formData.senha,
-      });
+      // Requisição para o servidor de login
+      const response = await axiosInstance.post(
+        "http://localhost:4000/usuarios/login",
+        {
+          email: formData.email,
+          senha: formData.senha,
+        }
+      );
 
+      // Verificação da resposta do servidor
       if (response.status === 200) {
-        console.log("Login bem sucedido!");
-        
+        // Login bem-sucedido
+        login(response.data.token);
+        console.log("Token recebido:", response.data.token);
+
+        // Requisição para obter o nome do usuário após o login
+        const nomeResponse = await axiosInstance.get(
+          "http://localhost:4000/usuarios/buscarNome",
+          {
+            headers: {
+              Authorization: `Bearer ${response.data.token}`,
+            },
+          }
+        );
+
+        // Atualização do nome do usuário no contexto
+        setAuthenticatedUser(nomeResponse.data.usuarioNome);
+        console.log("Nome do usuário:", nomeResponse.data.usuarioNome);
+
+        // Redirecionamento para a página inicial após o login bem-sucedido
         navigate("/home");
       } else {
+        // Erro no login
         console.error("Erro no login");
       }
     } catch (error) {
+      // Tratamento de erros durante o login
       console.error("Erro no login", error);
 
-      // Verifica qual é o erro é do back com detalhes
       if (error.response) {
         setError(error.response.data.error);
       } else {
@@ -67,6 +98,7 @@ const App = () => {
     }
   };
 
+  // Renderização do componente de login
   return (
     <AppBody>
       <Main>

@@ -27,7 +27,7 @@ const App = () => {
       <SideBar />
       <Main>
         <ContainerLembrete>
-          <H2TelaInicial>LEMBRETE</H2TelaInicial>
+          <H2TelaInicial>LEMBRETES</H2TelaInicial>
         </ContainerLembrete>
       </Main>
       </ContainerMainPrincial>

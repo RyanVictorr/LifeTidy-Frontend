@@ -58,8 +58,8 @@ const toggleModal = () => {
                     </ContainerImgPerfil>
                 </ContainerPerfil>
                 <Modal isOpen={showModal} closeModal={toggleModal} />
-    
-            </ContainerHeader>
+    </ContainerHeader>
+            
         
     );
 }

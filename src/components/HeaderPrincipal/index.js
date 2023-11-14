@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
 import perfil from "../../assets/perfil.png";
+import Modal from "../ModalTarefa/index.js"
 import { 
     ContainerHeader,
     ContainerLogo,
@@ -16,9 +17,13 @@ import {
     ContainerSubMenu,} from "./styles";
 
 const Header = () => {
-    const navigate = useNavigate();
-  const [showSubMenu, setShowSubMenu] = useState(false);
+const navigate = useNavigate();
+const [showModal, setShowModal] = useState(false);
+const [showSubMenu, setShowSubMenu] = useState(false);
 
+const toggleModal = () => {
+    setShowModal(!showModal);
+  };
   const toggleSubMenu = () => {
     setShowSubMenu(!showSubMenu);
   };
@@ -34,7 +39,7 @@ const Header = () => {
                 <ContainerButtons>
                     <InputPesquisa type="text" placeholder="PESQUISAR"/>
                     <ContainerButtonsModal>
-                        <ButtonAdicionar></ButtonAdicionar>
+                        <ButtonAdicionar  onClick={toggleModal}></ButtonAdicionar>
                         <ButtonAviso></ButtonAviso>
                         <ButtonDesempenho></ButtonDesempenho>
                     </ContainerButtonsModal>
@@ -52,6 +57,8 @@ const Header = () => {
                         </ContainerSubMenu>
                     </ContainerImgPerfil>
                 </ContainerPerfil>
+                <Modal isOpen={showModal} closeModal={toggleModal} />
+    
             </ContainerHeader>
         
     );

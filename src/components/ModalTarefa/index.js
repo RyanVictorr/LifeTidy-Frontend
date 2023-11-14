@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   Dialog, 
   ContainerAdicionarTarefa, 
@@ -22,14 +23,19 @@ import {
     
   } from "@fortawesome/free-solid-svg-icons";
 
-const App = () => {
+  const Modal = ({ isOpen, closeModal }) => {
+    const navigate = useNavigate();
+    const closeModalAndNavigateHome = () => {
+      closeModal(); // Fechar a modal
+      navigate("/home"); // Navegar para a Home
+    };
   return (
-    <Dialog>
+    <Dialog open={isOpen}>
       <ContainerAdicionarTarefa>
         <ContainerH2Tarefa>
           <H2AdicionarTarefa>ADICIONAR TAREFA</H2AdicionarTarefa>
           <ContainerButtonExit>
-          <StyledIcon icon={faClose}/>
+          <StyledIcon icon={faClose}  onClick={closeModalAndNavigateHome}/>
           </ContainerButtonExit>
         </ContainerH2Tarefa>
         <FormDetalhesTarefas>
@@ -86,4 +92,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Modal;

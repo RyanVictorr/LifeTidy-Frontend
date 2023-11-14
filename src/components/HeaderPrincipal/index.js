@@ -17,7 +17,7 @@ import {
     LinkPerfil,ImagePerfil,
     ContainerSubMenu,} from "./styles";
 
-const Header = () => {
+    const Header = ({ openModal }) => {
 const navigate = useNavigate();
 const [showModal, setShowModal] = useState(false);
 const [showSubMenu, setShowSubMenu] = useState(false);
@@ -52,7 +52,7 @@ const toggleModal = () => {
                 <ContainerButtons>
                     <InputPesquisa type="text" placeholder="PESQUISAR"/>
                     <ContainerButtonsModal>
-                        <ButtonAdicionar  onClick={toggleModal}></ButtonAdicionar>
+                    <ButtonAdicionar onClick={openModal}></ButtonAdicionar>
                         <ButtonAviso></ButtonAviso>
                         <ButtonDesempenho></ButtonDesempenho>
                     </ContainerButtonsModal>

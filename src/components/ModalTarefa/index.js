@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import {
   Dialog,
@@ -23,6 +23,7 @@ import {
 } from "./styles";
 
 const Modal = ({ isOpen, closeModal }) => {
+
   if (!isOpen) {
     return null;
   }
@@ -73,15 +74,16 @@ const Modal = ({ isOpen, closeModal }) => {
             </ContainerInicioConclusaoHorario>
           </ContainerConclusao>
           <ContainerDescricaoTarefa>
-            <H4InfomacoesInputs>TAREFA</H4InfomacoesInputs>
+            <H4InfomacoesInputs>Tarefa</H4InfomacoesInputs>
             <TextArea type="text"></TextArea>
           </ContainerDescricaoTarefa>
+          
           <ContainerDescricaoTarefa>
             <H4InfomacoesInputs>DESCRIÇÃO</H4InfomacoesInputs>
             <TextArea type="text"></TextArea>
           </ContainerDescricaoTarefa>
           <DivButtonNovaTarefa>
-            <ButtonCriarTarefa type="submit">CRIAR TAREFA</ButtonCriarTarefa>
+          <ButtonCriarTarefa type="submit">CRIAR TAREFA</ButtonCriarTarefa>
           </DivButtonNovaTarefa>
         </FormDetalhesTarefas>
       </ContainerAdicionarTarefa>

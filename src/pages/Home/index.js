@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "../../components/HeaderPrincipal/index.js";
 import SideBar from "../../components/MenuLateral/index.js";
 import Modal from "../../components/ModalTarefa";
+import Tarefa from "../../components/Tarefas/index.js";
 
 import { 
   AppBody, ContainerMainPrincial,
@@ -28,6 +29,7 @@ const App = () => {
       <Main>
         <ContainerLembrete>
           <H2TelaInicial>LEMBRETES</H2TelaInicial>
+          <Tarefa />
         </ContainerLembrete>
       </Main>
       </ContainerMainPrincial>

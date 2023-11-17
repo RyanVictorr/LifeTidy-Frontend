@@ -24,21 +24,21 @@ import {
 } from "./styles";
 
 const App = () => {
-  // Configuração do Axios
   const axiosInstance = axios.create({
     withCredentials: true,
   });
 
-  // Hooks e estado para controle do formulário e erros
   const navigate = useNavigate();
-  const { login, setAuthenticatedUser } = useAuth();
+  const { setToken } = useAuth();
+  
+  
   const [formData, setFormData] = useState({
     email: "",
     senha: "",
   });
+
   const [error, setError] = useState(null);
 
-  // Função para atualizar o estado do formulário
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -46,49 +46,33 @@ const App = () => {
     });
   };
 
-  // Função para submeter o formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Requisição para o servidor de login
       const response = await axiosInstance.post(
-        "http://localhost:4000/usuarios/login",
+        'http://localhost:4000/usuarios/login',
         {
           email: formData.email,
           senha: formData.senha,
         }
       );
 
-      // Verificação da resposta do servidor
       if (response.status === 200) {
-        // Login bem-sucedido
-        login(response.data.token);
-        console.log("Token recebido:", response.data.token);
+        // Após o login bem-sucedido
+        localStorage.setItem("token", response.data.token);
+        setToken(response.data.token);
+        console.log(response);
 
-        // Requisição para obter o nome do usuário após o login
-        const nomeResponse = await axiosInstance.get(
-          "http://localhost:4000/usuarios/buscarNome",
-          {
-            headers: {
-              Authorization: `Bearer ${response.data.token}`,
-            },
-          }
-        );
-
-        // Atualização do nome do usuário no contexto
-        setAuthenticatedUser(nomeResponse.data.usuarioNome);
-        console.log("Nome do usuário:", nomeResponse.data.usuarioNome);
-
-        // Redirecionamento para a página inicial após o login bem-sucedido
-        navigate("/home");
+        navigate('/home');
       } else {
-        // Erro no login
-        console.error("Erro no login");
+        console.error("Erro no login - código de status:", response.status);
+        setError(
+          "Credenciais inválidas. Por favor, verifique seus dados de login."
+        );
       }
     } catch (error) {
-      // Tratamento de erros durante o login
-      console.error("Erro no login", error);
+      console.error("Erro no login:", error);
 
       if (error.response) {
         setError(error.response.data.error);
@@ -98,7 +82,6 @@ const App = () => {
     }
   };
 
-  // Renderização do componente de login
   return (
     <AppBody>
       <Main>

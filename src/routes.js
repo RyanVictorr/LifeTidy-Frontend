@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
+import { AuthProvider } from './contexts/AuthContext';
 import LandingPage from './pages/LandingPage'
 import SobreNos from './pages/SobreNos'
 import Cadastro from './pages/Cadastro'
@@ -11,20 +11,22 @@ import Header from './components/HeaderPrincipal'
 import Modal from './components/ModalTarefa'
 
 function MyRoutes() {
-
     return (
-        <Router>
-            <Routes>
-                <Route path="/landingpage" element={<LandingPage/>} />
-                <Route path="/sobrenos" element={<SobreNos/>} />
-                <Route path='/cadastro' element={<Cadastro/>}/>
-                <Route path='/login' element={<Login/>} />
-                <Route path='/senha' element={<Senha/>} />
-                <Route path='/home' element={<Home/>} />
-                <Route path='/header' element={<Header/>} />
-                <Route path='/modal' element={<Modal/>} />
-            </Routes>
-
-        </Router>)
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/landingpage" element={<LandingPage/>} />
+                    <Route path="/sobrenos" element={<SobreNos/>} />
+                    <Route path='/cadastro' element={<Cadastro/>}/>
+                    <Route path='/login' element={<Login/>} />
+                    <Route path='/senha' element={<Senha/>} />
+                    <Route path='/home' element={<Home/>} />
+                    <Route path='/header' element={<Header/>} />
+                    <Route path='/modal' element={<Modal/>} />
+                </Routes>
+            </Router>
+        </AuthProvider>
+    );
 }
-export default MyRoutes
+
+export default MyRoutes;

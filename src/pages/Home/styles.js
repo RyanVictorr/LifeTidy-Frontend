@@ -24,7 +24,6 @@ border-radius: 15px;
 margin: 10px 5px;
 height: 730px;
 min-width: 346px;
-}
 `;
 export const H2TelaInicial = styled.h2`
 color: #333333;

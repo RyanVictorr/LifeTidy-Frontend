@@ -163,12 +163,15 @@ export const ContainerPerfil = styled.div`
 export const Pnome = styled.p`
   margin: 0;
   min-width: 103px;
+  text-align: right;
   @media (max-width: 842px) {
     font-size: 13px;
+    text-align: center;
   }
   @media (max-width: 568px) {
     font-size: 11px;
     min-width: 0;
+    text-align: center;
   }
 `;
 export const ContainerImgPerfil = styled.div`

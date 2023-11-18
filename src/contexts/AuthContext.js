@@ -1,41 +1,42 @@
-// Em um arquivo de contexto (por exemplo, AuthContext.js)
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
-  const [userName, setUserName] = useState(null);
+  const [userName, setUserName] = useState('');
+  const [token, setToken] = useState('');
 
-  const login = (newToken) => {
-    setToken(newToken);
-  };
+  // Carregar token e nome do usuário do localStorage no carregamento inicial
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    const storedUserName = localStorage.getItem('userName');
+    
+    if (storedToken) {
+      setToken(storedToken);
+    }
 
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+  }, []);
+
+  // Definir token e nome do usuário no localStorage
+  useEffect(() => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('userName', userName);
+  }, [token, userName]);
+
+  // Função para realizar o logout
   const logout = () => {
-    setToken(null);
-    setUserName(null); // Certifique-se de limpar o userName ao fazer logout
-  };
-  const setAuthenticatedUser = (name) => {
-    setUserName(name);
+    setUserName('');
+    setToken(''); 
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        token,
-        setToken,
-        login,
-        logout,
-        userName,
-        setUserName,
-        setAuthenticatedUser,
-      }}
-    >
+    <AuthContext.Provider value={{ userName, setUserName, token, setToken, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+export const useAuth = () => useContext(AuthContext);

@@ -53,7 +53,7 @@ const Tarefa = () => {
             <PPrioridade>URGÊNCIA</PPrioridade>
           </TextBox>
           <DescricaoDetalhada>
-            <IconDescricao src={Descrição} alt="icon-descrição" />
+           <IconDescricao src={Descrição} alt="icon-descrição" />
             <P>APRESENTAÇÃO DETALHATA, SOBRE AS TAREFAS REALIZADAS DA SPRINT.</P>
           </DescricaoDetalhada>
         </DescricaoLembretes>
@@ -62,6 +62,7 @@ const Tarefa = () => {
         <StyledIcon icon={faPencilAlt} />
         </EditarExcluir>
         </ContainerLembretes>
+         
       </ContainerPaiLembretes>
     );
   };

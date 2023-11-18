@@ -74,7 +74,7 @@ const Modal = ({ isOpen, closeModal }) => {
             </ContainerInicioConclusaoHorario>
           </ContainerConclusao>
           <ContainerDescricaoTarefa>
-            <H4InfomacoesInputs>Tarefa</H4InfomacoesInputs>
+            <H4InfomacoesInputs>TAREFA</H4InfomacoesInputs>
             <TextArea type="text"></TextArea>
           </ContainerDescricaoTarefa>
           

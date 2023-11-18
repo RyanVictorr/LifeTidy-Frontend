@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export const ContainerPaiLembretes = styled.div`
@@ -110,11 +111,19 @@ height: 21px;
 `;
 
 export const EditarExcluir = styled.div`
-  // Adicione estilos para div-editar-excluir aqui
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+margin-bottom: 20px;
 `;
 
-export const StyledIcon = styled.div`
-  // Adicione estilos para styled-icon aqui
+export const StyledIcon = styled(FontAwesomeIcon)`
+margin-left: 8px;
+cursor: pointer;
+font-size: 18px;
+margin-bottom: 20px;
+
 `;
 
 

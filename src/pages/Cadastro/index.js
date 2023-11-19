@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import logo from "../../assets/logo.png";
 import ImageExibicao from "../../assets/exibição.jpg";
-
 import {
   AppBody,
   ContainerCadastro,
@@ -26,6 +24,11 @@ import {
   PCadastro,
   ContainerImgExib,
   Image,
+  Container,
+  UserIcone,
+  EmailIcone,
+  PasswordIcone,
+  TelIcone
 } from "./styles";
 
 const App = () => {
@@ -39,33 +42,9 @@ const App = () => {
     telefone: "",
   });
 
-  const [errors, setErrors] = useState([]);
-  const [senhaError, setSenhaErrors] = useState([]);
+  const [formErrors, setFormErrors] = useState([]);
 
-  const handlePhone = (event) => {
-    let input = event.target;
-    input.value = phoneMask(input.value);
-    setFormData({
-      ...formData,
-      [input.name]: input.value,
-    });
-  };
-
-  const phoneMask = (value) => {
-    if (!value) return "";
-    value = value.replace(/\D/g, "");
-    value = value.replace(/(\d{2})(\d)/, "($1) $2");
-    value = value.replace(/(\d)(\d{4})$/, "$1-$2");
-    return value;
-  };
-  const handlePhoneChange = (e) => {
-    handlePhone(e);
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
+  // Handler para alterações nos campos de input
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -73,18 +52,39 @@ const App = () => {
     });
   };
 
+  // Handler para alterações no campo de telefone com máscara
+  const handlePhoneChange = (e) => {
+    const value = phoneMask(e.target.value);
+    setFormData({
+      ...formData,
+      [e.target.name]: value,
+    });
+  };
+
+  // Função para aplicar máscara no número de telefone
+  const phoneMask = (value) => {
+    if (!value) return "";
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d{2})(\d)/, "($1) $2");
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+    return value;
+  };
+
+  // Handler para submissão do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { nome_usuario, email, senha, confirmarSenha, telefone } = formData;
     const telefoneSemFormatacao = telefone.replace(/\D/g, "");
+
+    // Verifica se as senhas coincidem
     if (senha !== confirmarSenha) {
-      const senhaError = "As senhas não coincidem.";
-      return setSenhaErrors(senhaError);
+      setFormErrors(["As senhas não coincidem."]);
+      return;
     }
 
     try {
-      //Chamada para o backend
+      // Chamada para o backend para cadastrar usuário
       const response = await axios.post(
         "http://localhost:4000/usuarios/cadastrar",
         {
@@ -104,8 +104,7 @@ const App = () => {
     } catch (error) {
       if (error.response && error.response.data && error.response.data.erros) {
         const erros = error.response.data.erros;
-        setErrors(erros); // Define os erros no estado 'errors'
-        // Restante do seu código de tratamento de erros...
+        setFormErrors(erros.map((error) => error.msg));
       } else {
         console.error("Erro ao cadastrar o usuário", error);
       }
@@ -119,70 +118,80 @@ const App = () => {
           <Main>
             <Form onSubmit={handleSubmit}>
               <H2Cadastro>CADASTRO</H2Cadastro>
-              <Input
-                type="text"
-                placeholder="NOME COMPLETO"
-                required
-                autoFocus
-                name="nome_usuario"
-                value={formData.nome_usuario}
-                onChange={handleChange}
-                maxLength={38}
-              />
-              <Input
-                type="email"
-                placeholder="E-MAIL"
-                required
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                maxLength={35}
-              />
-              <Input
-                type="password"
-                placeholder="SENHA"
-                required
-                name="senha"
-                value={formData.senha}
-                onChange={handleChange}
-                maxLength={20}
-                
-              />
-              <Input
-                type="password"
-                placeholder="CONFIRME SUA SENHA"
-                required
-                name="confirmarSenha"
-                value={formData.confirmarSenha}
-                onChange={handleChange}
-                maxLength={25}
-                
-              />
-              <Input
-                $lastinput={true}
-                type="tel"
-                placeholder="TELEFONE"
-                required
-                name="telefone"
-                value={formData.telefone}
-                onChange={handlePhoneChange}
-                maxLength={15}
-              />
-              
-              {errors.length > 0 && (
+              <Container>
+                <UserIcone />
+                <Input
+                  type="text"
+                  placeholder="NOME COMPLETO"
+                  required
+                  autoFocus
+                  name="nome_usuario"
+                  value={formData.nome_usuario}
+                  onChange={handleChange}
+                  maxLength={40}
+                />
+              </Container>
+              <Container>
+                <EmailIcone />
+                <Input
+                  type="email"
+                  placeholder="E-MAIL"
+                  required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  maxLength={40}
+                />
+              </Container>
+              <Container>
+                <PasswordIcone />
+                <Input
+                  type="password"
+                  placeholder="SENHA"
+                  required
+                  name="senha"
+                  value={formData.senha}
+                  onChange={handleChange}
+                  maxLength={30}
+                />
+              </Container>
+              <Container>
+                <PasswordIcone />
+                <Input
+                  type="password"
+                  placeholder="CONFIRME SUA SENHA"
+                  required
+                  name="confirmarSenha"
+                  value={formData.confirmarSenha}
+                  onChange={handleChange}
+                  maxLength={30}
+                />
+              </Container>
+              <Container>
+                <TelIcone />
+                <Input
+                  $lastinput={true}
+                  type="tel"
+                  placeholder="TELEFONE"
+                  required
+                  name="telefone"
+                  value={formData.telefone}
+                  onChange={handlePhoneChange}
+                  maxLength={15}
+                />
+              </Container>
+
+              {formErrors.length > 0 && (
                 <div>
                   <p style={{ fontWeight: "bold" }}>Erros encontrados:</p>
                   <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
-                    {errors.map((error, index) => (
+                    {formErrors.map((error, index) => (
                       <li key={index} style={{ color: "red" }}>
-                        {error.msg}
+                        {error}
                       </li>
                     ))}
                   </ul>
                 </div>
-              )}
-              {senhaError !== "" && (
-                <p style={{ color: "red" }}>{senhaError}</p>
               )}
 
               <ContainerText>

@@ -75,6 +75,37 @@ export const H2Cadastro = styled.h2`
   text-align: center;
 `;
 
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  
+ 
+`;
+
+export const UserIcone = styled.div`
+  width: 1.8em;
+  height: 1.9em;
+  background-image: url(${UserIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 8px;
+  margin-right: 5px;
+`;
+
+export const EmailIcone = styled(UserIcone)`
+  background-image: url(${EmailIcon});
+`;
+
+export const PasswordIcone = styled(UserIcone)`
+  background-image: url(${senhaIcon});
+`;
+
+export const TelIcone = styled(UserIcone)`
+  background-image: url(${TelefoneIcon});
+  top: 3px;
+`;
+
 export const Input = styled.input`
   border: none;
   border-radius: 10px;
@@ -82,27 +113,14 @@ export const Input = styled.input`
   margin-top: 15px;
   font-size: 17px;
   color: #3c3b3b;
-  background-position: 10px;
-  background-repeat: no-repeat;
   background-size: 25px;
-  padding-left: 40px;
+  padding-left: 8px;
   min-width: 308px;
   margin-bottom: ${(props) => (props.$lastinput ? "15px" : "0")};
-
-  &[type="text"] {
-    background-image: url(${UserIcon});
-  }
-
-  &[type="email"] {
-    background-image: url(${EmailIcon});
-  }
-
-  &[type="password"] {
-    background-image: url(${senhaIcon});
-  }
-  &[type="tel"] {
-    background-image: url(${TelefoneIcon});
-  }
+  &::placeholder{
+      font-weight: bold;
+    }
+ 
 
   @media (max-width: 555px) {
     min-width: 303px;

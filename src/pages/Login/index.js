@@ -21,6 +21,9 @@ import {
   PInscrevaSe,
   LinkInscrevaSe,
   ErrorText,
+  Container,
+  PasswordIcone,
+  EmailIcone
 } from "./styles";
 
 const App = () => {
@@ -47,16 +50,16 @@ const App = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const response = await axiosInstance.post(
-        'http://localhost:4000/usuarios/login',
-        {
-          email: formData.email,
-          senha: formData.senha,
-        }
-      );
+  try {
+    const response = await axiosInstance.post(
+      'http://localhost:4000/usuarios/login',
+      {
+        email: formData.email,
+        senha: formData.senha,
+      }
+    );
 
       if (response.status === 200) {
         // Após o login bem-sucedido
@@ -92,22 +95,30 @@ const App = () => {
             </Link>
           </ContainerLogo>
           <ContainerInputs>
-            <Input
-              type="email"
-              placeholder="E-MAIL"
-              required
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <Input
-              type="password"
-              placeholder="SENHA"
-              required
-              name="senha"
-              value={formData.senha}
-              onChange={handleChange}
-            />
+          <Container>
+                <EmailIcone />
+                <Input
+                  type="email"
+                  placeholder="E-MAIL"
+                  required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  maxLength={40}
+                />
+              </Container>
+            <Container>
+                <PasswordIcone />
+                <Input
+                  type="password"
+                  placeholder="SENHA"
+                  required
+                  name="senha"
+                  value={formData.senha}
+                  onChange={handleChange}
+                  maxLength={30}
+                />
+              </Container>
           </ContainerInputs>
           {error && <ErrorText>{error}</ErrorText>}
           <ContainerText>

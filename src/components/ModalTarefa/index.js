@@ -26,15 +26,15 @@ import {
 const Modal = ({ isOpen, closeModal }) => {
 
   const [formState, setFormState] = useState({
-    nome_tarefa: "tarefa",
-    descricao: "descricao",
-    categoria: "estudo",
-    data_inicio: "data_inicio",
-    data: "",
-    hora: "",
-    horafim: "",
-    importancia: "urgente",
-    status: "",
+    nome_tarefa: "",
+    descricao: "",
+    categoria: "",
+    data_inicio: "",
+    data_fim: "",
+    hora_inicio: "",
+    hora_fim: "",
+    importancia: "",
+    status: ""
   });
 
   const handleChange = (event) => {
@@ -110,9 +110,9 @@ const Modal = ({ isOpen, closeModal }) => {
               <H4InfomacoesInputs>INÍCIO</H4InfomacoesInputs>
               <InputSelect
                 type="date"
-                name="inicio"
+                name="data_inicio"
                 id="data_inicio"
-                value={formState.inicio}
+                value={formState.data_inicio}
                 onChange={handleChange}
               />
             </ContainerInicioConclusaoHorario>
@@ -120,8 +120,8 @@ const Modal = ({ isOpen, closeModal }) => {
               <H4InfomacoesInputs>HORÁRIO</H4InfomacoesInputs>
               <InputSelect
                 type="time"
-                name="horarioInicio"
-                value={formState.horarioInicio}
+                name="hora_inicio"
+                value={formState.hora_inicio}
                 onChange={handleChange}
               />
             </ContainerInicioConclusaoHorario>
@@ -131,8 +131,8 @@ const Modal = ({ isOpen, closeModal }) => {
               <H4InfomacoesInputs>CONCLUSÃO</H4InfomacoesInputs>
               <InputSelect
                 type="date"
-                name="conclusao"
-                value={formState.conclusao}
+                name="data_fim"
+                value={formState.data_fim}
                 onChange={handleChange}
               />
             </ContainerInicioConclusaoHorario>
@@ -140,8 +140,8 @@ const Modal = ({ isOpen, closeModal }) => {
               <H4InfomacoesInputs>HORÁRIO</H4InfomacoesInputs>
               <InputSelect
                 type="time"
-                name="horarioConclusao"
-                value={formState.horarioConclusao}
+                name="hora_fim"
+                value={formState.hora_fim}
                 onChange={handleChange}
               />
             </ContainerInicioConclusaoHorario>
@@ -151,8 +151,8 @@ const Modal = ({ isOpen, closeModal }) => {
             <TextArea
               type="text"
               id="tarefa"
-              name="tarefa"
-              value={formState.tarefa}
+              name="nome_tarefa"
+              value={formState.nome_tarefa}
               onChange={handleChange}
             ></TextArea>
           </ContainerDescricaoTarefa>

@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Senha from './pages/Senha'
 import Header from './components/HeaderPrincipal'
 import Modal from './components/ModalTarefa'
+import Hoje from './pages/Hoje'
 
 function MyRoutes() {
     return (
@@ -23,6 +24,7 @@ function MyRoutes() {
                     <Route path='/home' element={<Home/>} />
                     <Route path='/header' element={<Header/>} />
                     <Route path='/modal' element={<Modal/>} />
+                    <Route path='/hoje' element={<Hoje/>} />
                 </Routes>
             </Router>
         </AuthProvider>

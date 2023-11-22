@@ -9,12 +9,13 @@ display: flex;
 `;
 export const Main = styled.main`
 display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    position: relative;
-    left: 0;
-    transition: 0.6s ease;
-    transition-property: left;
+flex-wrap: wrap;
+width: 100%;
+position: relative;
+left: 0;
+transition: 0.6s ease;
+transition-property: left;
+justify-content: space-evenly;
     
 `;
 export const ContainerLembrete = styled.div`
@@ -25,6 +26,7 @@ margin: 10px 5px;
 height: 730px;
 min-width: 346px;
 `;
+
 export const H2TelaInicial = styled.h2`
 color: #333333;
 margin: 4px;

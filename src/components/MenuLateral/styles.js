@@ -5,8 +5,9 @@ export const MainPrincipal = styled.div`
   display: flex;
 `;
 
-export const DivLateral = styled.div``
-
+export const DivLateral = styled.div`
+height: 100vh;
+`;
 export const SideBar = styled.div`
   width: 193px;
   height: 100vh;
@@ -21,6 +22,7 @@ export const SideBar = styled.div`
 
   ${props => props.$active && css`
     left: 0;
+    
   `}
 `;
 

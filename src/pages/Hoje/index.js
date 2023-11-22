@@ -3,20 +3,26 @@ import { useAuth } from "../../contexts/AuthContext";
 import Header from "../../components/HeaderPrincipal/index.js";
 import SideBar from "../../components/MenuLateral/index.js";
 import Modal from "../../components/ModalTarefa";
-import Tarefa from "../../components/Tarefas/index.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { 
   AppBody,
-  ContainerMainPrincial,
   Main,
-  ContainerLembrete,
-  H2TelaInicial 
+  ContainerMainPrincipalHoje,
+  ContainerSubEsquerda,
+  ContainerSubDireita,
+  ContainerSubBaixo,
+  ContainerHoje,
+  PPrioridadeUrgente,
+  ContainerBorda,
+  ContainerTarefa,
+  PPrioridadeRegular,
+  PPrioridadeBaixa,
 } from "./styles";
 
-const Home = () => {
-  const navigate = useNavigate();
+const Hoje = () => {
+    const navigate = useNavigate();
   const { token, setUserName, logout } = useAuth(); // Obtendo o token do contexto de autenticação
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,23 +64,42 @@ const Home = () => {
     }
   }, [navigate, setUserName, token, logout]);
 
+    return(
+        <AppBody>
+             <Header openModal={openModal} />
+             <ContainerMainPrincipalHoje>
+            <SideBar />
+            <Main>
 
-  return (
-    <AppBody>
-      <Header openModal={openModal} />
-      <ContainerMainPrincial>
-      <SideBar />
-      <Main >
-        <ContainerLembrete>
-          <H2TelaInicial>LEMBRETES</H2TelaInicial>
-          <Tarefa />
-        </ContainerLembrete>
-        
-      </Main>
-      </ContainerMainPrincial>
-      {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
-    </AppBody>
-  );
+                    <ContainerSubEsquerda>
+                      <ContainerHoje>
+                      <PPrioridadeUrgente>Urgente</PPrioridadeUrgente>
+                      <ContainerBorda></ContainerBorda>
+                      <ContainerTarefa></ContainerTarefa>
+                      </ContainerHoje>
+                    </ContainerSubEsquerda>
+                    <ContainerSubDireita>
+                      <ContainerHoje>
+                      <PPrioridadeRegular>Regular</PPrioridadeRegular>
+                      <ContainerBorda></ContainerBorda>
+                      <ContainerTarefa></ContainerTarefa>
+                      </ContainerHoje>
+                    </ContainerSubDireita>
+                    <ContainerSubBaixo>
+                      <ContainerHoje>
+                      <PPrioridadeBaixa>Baixa</PPrioridadeBaixa>
+                      <ContainerBorda></ContainerBorda>
+                      <ContainerTarefa></ContainerTarefa>
+                      </ContainerHoje>
+                    </ContainerSubBaixo>
+                    
+
+                    
+
+            </Main>
+            </ContainerMainPrincipalHoje>
+            {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
+        </AppBody>
+    );
 };
-
-export default Home;
+export default Hoje;

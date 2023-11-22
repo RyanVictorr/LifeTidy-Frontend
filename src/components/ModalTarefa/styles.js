@@ -2,21 +2,31 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Dialog = styled.dialog`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   border: none;
   background-color: transparent;
   border-radius: 25px;
   max-width: 58em;
   padding: 0;
-  &::backdrop {
-    background-color: #011620d0;
+  margin: 1em;
+
+  @media (max-height: 700px) {
+    overflow-y: auto; 
+  max-height: 80vh;
   }
-  @media (max-width: 568px) {
-    width: 90%;
-  }
+`;
+
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 22, 32, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 `;
 
 export const ContainerAdicionarTarefa = styled.div`
@@ -93,6 +103,8 @@ export const InputSelect = styled.input`
   width: 10em;
   height: 1.8em;
   margin-right: 3px;
+  width: 90%;
+  max-width: 10.5em;
 `;
 export const TextArea = styled.textarea`
     background-color: #D9D9D9;
@@ -104,7 +116,8 @@ export const TextArea = styled.textarea`
     margin-right: 3px;
     text-align: start;
     padding: 4px 0 0 10px;
-    width: 29.5em;
+    width: 90%;
+    
 `;
 
 export const ContainerImportancia = styled.div`
@@ -162,5 +175,3 @@ export const ButtonCriarTarefa = styled.button`
     background-color: #9e9e9e;
   }
 `;
-
-// Continue adicionando os exports para os outros elementos...

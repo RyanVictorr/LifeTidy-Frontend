@@ -12,7 +12,7 @@ export const Main = styled.main`
   flex-wrap: wrap;
   width: 100%;
   position: relative;
-  left: ${props => props.$isActive ? '0' : '-130px'}; // Altera a propriedade 'left' com base na prop 'isActive'
+  left: ${props => props.$isActive ? '0' : '-130px'};
   transition: 0.6s ease;
   transition-property: left;
   display: flex;
@@ -29,7 +29,7 @@ export const ContainerLembrete = styled.div`
 export const H2TelaInicial = styled.h2`
   font-size: 20px;
   color: #333333;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adiciona sombra ao texto */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   padding: 10px;
   text-decoration: underline;
 `;

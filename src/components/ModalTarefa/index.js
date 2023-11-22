@@ -58,7 +58,6 @@ const Modal = ({ isOpen, closeModal }) => {
           },
         }
       );
-      console.log(response.data);
       closeModal();
     } catch (error) {
       console.error(error);
@@ -87,9 +86,10 @@ const Modal = ({ isOpen, closeModal }) => {
               value={formState.categoria}
               onChange={handleChange}
             >
-              <option value="estudo">ESTUDO</option>
-              <option value="compras">COMPRAS</option>
-              <option value="agenda">AGENDA</option>
+              <option value="">Sem</option>
+              <option value="ESTUDO">ESTUDO</option>
+              <option value="COMPRAS">COMPRAS</option>
+              <option value="AGENDA">AGENDA</option>
             </SelectInputsWidth>
           </ContainerCategoria>
           <ContainerImportancia>
@@ -100,9 +100,10 @@ const Modal = ({ isOpen, closeModal }) => {
               value={formState.importancia}
               onChange={handleChange}
             >
-              <option value="urgente">URGENTE</option>
-              <option value="regular">REGULAR</option>
-              <option value="pouco-urgente">BAIXA</option>
+              <option value="">Sem</option>
+              <option value="URGENTE">URGENTE</option>
+              <option value="REGULAR">REGULAR</option>
+              <option value="BAIXA">BAIXA</option>
             </SelectInputsWidth>
           </ContainerImportancia>
           <ContainerInicio>

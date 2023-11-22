@@ -42,7 +42,7 @@ const Header = ({ openModal }) => {
     try {
       await axios.post('http://localhost:4000/usuarios/logout');
       logout();
-      navigate('/login');
+      navigate('/landingpage');
     } catch (error) {
       console.error('Erro ao realizar logout:', error);
       // Trate o erro conforme necessário

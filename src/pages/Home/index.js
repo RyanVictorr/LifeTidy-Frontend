@@ -7,12 +7,12 @@ import Tarefa from "../../components/Tarefas/index.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { 
+import {
   AppBody,
   ContainerMainPrincial,
   Main,
   ContainerLembrete,
-  H2TelaInicial 
+  H2TelaInicial
 } from "./styles";
 
 const Home = () => {
@@ -20,57 +20,64 @@ const Home = () => {
   const { token, setUserName, logout } = useAuth(); // Obtendo o token do contexto de autenticação
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { sideBarIsActive } = useAuth();
 
   const openModal = () => {
     setIsModalOpen(true);
   };
- 
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
   useEffect(() => {
-    const localToken = localStorage.getItem('token');
+    const localToken = localStorage.getItem("token");
     if (!token && !localToken) {
-     // logout()
-      //navigate('/login');
+      logout();
+      navigate("/login");
     } else {
       const authToken = token || localToken;
-      axios.get('http://localhost:4000/usuarios/buscarNome', {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      })
-      .then((response) => {
-        const userName = response.data.usuarioNome;
-        setUserName(userName);
-        localStorage.setItem('userName', userName); // Armazenar o nome do usuário no localStorage
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 401) {
-          // Se receber um status 401 (Não Autorizado), o token pode ser inválido ou expirado
-          logout(); // Limpar os dados de autenticação
-          navigate('/login'); // Redirecionar para a página de login
-        } else {
-          console.error("Erro ao buscar o nome do usuário:", error);
-        }
-      });
+      axios
+        .get("http://localhost:4000/usuarios/buscarNome", {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        })
+        .then((response) => {
+          let userName = response.data.usuarioNome;
+          let userNameSplit = userName.split(" ");
+          if (userNameSplit.length > 2) {
+            userName = userNameSplit.slice(0, 2).join(" ");
+          }
+          setUserName(userName);
+          localStorage.setItem("userName", userName);
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 401) {
+            // Se receber um status 401 (Não Autorizado), o token pode ser inválido ou expirado
+            logout(); // Limpar os dados de autenticação
+            navigate("/landingpage"); // Redirecionar para a página de login
+          } else {
+            console.error("Erro ao buscar o nome do usuário:", error);
+            console.log(error);
+            logout();
+            navigate("/landingpage");
+          }
+        });
     }
   }, [navigate, setUserName, token, logout]);
-
 
   return (
     <AppBody>
       <Header openModal={openModal} />
       <ContainerMainPrincial>
-      <SideBar />
-      <Main >
-        <ContainerLembrete>
-          <H2TelaInicial>LEMBRETES</H2TelaInicial>
-          <Tarefa />
-        </ContainerLembrete>
-        
-      </Main>
+        <SideBar />
+        <Main $isActive={sideBarIsActive}>
+          <ContainerLembrete>
+            <H2TelaInicial>LEMBRETES</H2TelaInicial>
+            <Tarefa />
+          </ContainerLembrete>
+        </Main>
       </ContainerMainPrincial>
       {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
     </AppBody>

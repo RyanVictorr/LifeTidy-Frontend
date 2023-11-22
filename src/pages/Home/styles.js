@@ -5,31 +5,32 @@ export const AppBody = styled.div`
   background-color: #0a3950;
 `;
 export const ContainerMainPrincial = styled.div`
-display: flex;
+  display: flex;
 `;
 export const Main = styled.main`
-display: flex;
-flex-wrap: wrap;
-width: 100%;
-position: relative;
-left: 0;
-transition: 0.6s ease;
-transition-property: left;
-justify-content: space-evenly;
-    
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+  left: ${props => props.$isActive ? '0' : '-130px'}; // Altera a propriedade 'left' com base na prop 'isActive'
+  transition: 0.6s ease;
+  transition-property: left;
+  display: flex;
+  justify-content: center;
 `;
 export const ContainerLembrete = styled.div`
-background-color: #D9D9D9;
-padding: 10px;
-border-radius: 15px;
-margin: 10px 5px;
-height: 730px;
-min-width: 346px;
+  background-color: #d9d9d9;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 10px 5px;
+  min-width: 82%;
+  max-width: 1150px;
 `;
 
 export const H2TelaInicial = styled.h2`
-color: #333333;
-margin: 4px;
-max-width: 137px;
-font-size: 14px;
+  font-size: 20px;
+  color: #333333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adiciona sombra ao texto */
+  padding: 10px;
+  text-decoration: underline;
 `;

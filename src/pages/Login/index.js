@@ -63,9 +63,8 @@ const App = () => {
 
       if (response.status === 200) {
         // Após o login bem-sucedido
-        localStorage.setItem("token", response.data.token);
-        setToken(response.data.token);
-        console.log(response);
+        localStorage.setItem("token", response.data.Token);
+        setToken(response.data.Token);
 
         navigate('/home');
       } else {

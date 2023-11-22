@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import {
   MainPrincipal,
   DivLateral,
@@ -29,9 +30,11 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const [isActive, setIsActive] = useState(false);
+  const { setSideBarIsActive } = useAuth();
 
   const toggleSidebar = () => {
     setIsActive(!isActive);
+    setSideBarIsActive(prevIsActive => !prevIsActive)
   };
 
   return (

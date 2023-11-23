@@ -21,6 +21,7 @@ import {
   ContainerDescricaoTarefa,
   DivButtonNovaTarefa,
   ButtonCriarTarefa,
+  ModalBackground
 } from "./styles";
 
 const Modal = ({ isOpen, closeModal }) => {
@@ -44,32 +45,35 @@ const Modal = ({ isOpen, closeModal }) => {
     });
   };
 
-  axios.defaults.withCredentials = true;
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(
-        "http://localhost:4000/tarefas/adicionar",
-        formState,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      closeModal();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+ axios.defaults.withCredentials = true;
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  try {
+    const token = localStorage.getItem("token");
+    await axios.post(
+      "http://localhost:4000/tarefas/adicionar",
+      formState,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    closeModal();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   if (!isOpen) {
     return null;
   }
 
   return (
-    <Dialog open={isOpen}>
+    <>
+      {isOpen && (
+        <ModalBackground>
+          <Dialog open={isOpen}>
       <ContainerAdicionarTarefa>
         <ContainerH2Tarefa>
           <H2AdicionarTarefa>ADICIONAR TAREFA</H2AdicionarTarefa>
@@ -172,7 +176,10 @@ const Modal = ({ isOpen, closeModal }) => {
           </DivButtonNovaTarefa>
         </FormDetalhesTarefas>
       </ContainerAdicionarTarefa>
-    </Dialog>
+      </Dialog>
+        </ModalBackground>
+      )}
+    </>
   );
 };
 

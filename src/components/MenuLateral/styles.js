@@ -24,7 +24,11 @@ export const SideBar = styled.div`
     left: 0;
     
   `}
-`;
+  @media (max-height: 800px) {
+    height: 100%
+  }
+  
+  `;
 
 export const Menu = styled.div`
   width: 100%;
@@ -103,12 +107,8 @@ export const NavLateral = styled.nav`
   height: 100%;
 
   @media (max-height: 800px) {
-    .nav-lateral {
       height: 100%;
     }
 
-    .side-bar {
-      height: 100%;
-    }
-  }
+    
 `;

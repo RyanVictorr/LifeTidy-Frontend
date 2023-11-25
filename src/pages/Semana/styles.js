@@ -20,49 +20,44 @@ display: flex;
 
 export const ContainerSubEsquerda = styled.div`
 background-color: #D9D9D9;
-padding: 10px;
+padding: 20px 5px;
 border-radius: 15px;
-margin: 10px 5px;
+margin: 30px 5px 100px 5px;
 height: 730px;
 min-width: 346px;
+margin-bottom: 40px;
 `;
 export const ContainerSubDireita = styled.div`
 max-width: 750px;
 margin-left: 0;
 background-color: #D9D9D9;
-    padding: 10px;
+padding: 20px 5px;
     border-radius: 15px;
-    margin: 10px 5px;
+    margin: 30px 5px 100px 5px;
     height: 730px;
     min-width: 346px;
+    margin-bottom: 40px;
     
 `;
 export const ContainerSubBaixo = styled.div`
 background-color: #D9D9D9;
-padding: 10px;
+padding: 20px 5px;
 border-radius: 15px;
-margin: 10px 5px;
+margin: 30px 5px 100px 5px;
 height: 730px;
 min-width: 346px;
+margin-bottom: 40px;
 `;
 export const ContainerHoje=styled.div`
-align-items: flex-start;
 height: 100%;
     display: flex;
     flex-direction: column;
-`;
-export const PPrioridadeUrgente=styled.div`
-height: 44px;
-    width: 133px;
-    font-size: 20px;
-    background-color: #EA4335;
-        color: #FFF;
-    justify-content: center;
-    margin: 0;
-    display: flex;
     align-items: center;
-    text-align: center;
-    border-radius: 22px;
+`;
+export const PDataSemana=styled.div`
+margin: 0;
+font-size: 22px;
+    font-weight: bold;
     
 `;
 
@@ -77,39 +72,10 @@ export const ContainerTarefa = styled.div`
 height: 90%;
 background-color: #A8A3A3;
 padding: 10px 5px;
-margin-right: auto;
-margin-left: auto;
+margin: 0;
 border-radius: 25px;
 min-height: 300px;
 max-height: 534px;
 overflow-y: scroll;
 min-width: 300px;
-`;
-export const PPrioridadeRegular=styled.div`
-height: 44px;
-    width: 133px;
-    font-size: 20px;
-    background-color: #1B0BD7;
-        color: #FFF;
-    justify-content: center;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    border-radius: 22px;
-    
-`;
-export const PPrioridadeBaixa=styled.div`
-height: 44px;
-    width: 133px;
-    font-size: 20px;
-    background-color: #13F300;
-        color: #FFF;
-    justify-content: center;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    border-radius: 22px;
-    
 `;

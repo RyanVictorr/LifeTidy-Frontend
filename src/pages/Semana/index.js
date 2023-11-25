@@ -14,14 +14,13 @@ import {
   ContainerSubDireita,
   ContainerSubBaixo,
   ContainerHoje,
-  PPrioridadeUrgente,
+  PDataSemana,
   ContainerBorda,
   ContainerTarefa,
-  PPrioridadeRegular,
-  PPrioridadeBaixa,
+  
 } from "./styles";
 
-const Hoje = () => {
+const Semana = () => {
     const navigate = useNavigate();
   const { token, setUserName, logout } = useAuth(); // Obtendo o token do contexto de autenticação
 
@@ -73,21 +72,21 @@ const Hoje = () => {
 
                     <ContainerSubEsquerda>
                       <ContainerHoje>
-                      <PPrioridadeUrgente>Urgente</PPrioridadeUrgente>
+                      <PDataSemana>14/06/2023</PDataSemana>
                       <ContainerBorda></ContainerBorda>
                       <ContainerTarefa></ContainerTarefa>
                       </ContainerHoje>
                     </ContainerSubEsquerda>
                     <ContainerSubDireita>
                       <ContainerHoje>
-                      <PPrioridadeRegular>Regular</PPrioridadeRegular>
+                      <PDataSemana>15/06/2023</PDataSemana>
                       <ContainerBorda></ContainerBorda>
                       <ContainerTarefa></ContainerTarefa>
                       </ContainerHoje>
                     </ContainerSubDireita>
                     <ContainerSubBaixo>
                       <ContainerHoje>
-                      <PPrioridadeBaixa>Baixa</PPrioridadeBaixa>
+                      <PDataSemana>16/06/2023</PDataSemana>
                       <ContainerBorda></ContainerBorda>
                       <ContainerTarefa></ContainerTarefa>
                       </ContainerHoje>
@@ -102,4 +101,4 @@ const Hoje = () => {
         </AppBody>
     );
 };
-export default Hoje;
+export default Semana;

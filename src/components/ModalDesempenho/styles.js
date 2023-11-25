@@ -7,6 +7,9 @@ background-color: transparent;
 border-radius: 25px;
 max-width: 58em;
 padding: 0;
+@media(max-width: 568px) {
+  width: 90%;
+        }
 `;
 
 export const DivAdicionarTarefa = styled.div`
@@ -51,13 +54,7 @@ border-bottom-left-radius: 25px;
 border-bottom-right-radius: 25px;
 `;
 
-export const Container = styled.div`
-  /* Adicione estilos para o Container aqui */
-`;
 
-export const NavButton = styled.div`
-  /* Adicione estilos para o NavButton aqui */
-`;
 
 export const ContainerInformacoesConcluidasModal = styled.div`
 display: flex;
@@ -73,15 +70,22 @@ export const MedalIcon = styled(FontAwesomeIcon)`
   /* Adicione estilos para o MedalIcon aqui */
 `;
 export const H2Parabens = styled.h2`
-  /* Adicione estilos para o H2Parabens aqui */
+margin: 12px 0 8px 0;
 `;
 
 export const PInformacoesDesempenho = styled.p`
-  /* Adicione estilos para o PInformacoesDesempenho aqui */
+text-align: center;
+font-weight: bold;
+margin-top: 0;
 `;
 
 export const DivBordaRedimento = styled.div`
-  /* Adicione estilos para o DivBordaRedimento aqui */
+width: 90%;
+height: 3px;
+background-color: #0A3950;
+margin: 1em 0;
+        width: 100%;
+        margin-top: 0.5em;
 `;
 
 export const DivPorcentagemRedimento = styled.div`

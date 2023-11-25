@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import perfil from "../../assets/perfil.png";
 import Modal from "../ModalTarefa/index.js";
+import Desempenho from "../ModalDesempenho/index.js";
 import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 import {
@@ -23,15 +24,19 @@ import {
   ContainerSubMenu,
 } from "./styles";
 
-const Header = ({ openModal }) => {
+const Header = ({ openModal,openModalDesempenho }) => {
     
   const navigate = useNavigate();
   const { userName, logout } = useAuth();
   const [showModal, setShowModal] = useState(false);
+  const [showModalDesempenho, setShowModalDesempenho] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
 
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+  const toggleModalDesempenho = () => {
+    setShowModalDesempenho(!showModalDesempenho);
   };
 
   const toggleSubMenu = () => {
@@ -63,7 +68,7 @@ const Header = ({ openModal }) => {
         <ContainerButtonsModal>
           <ButtonAdicionar onClick={openModal}></ButtonAdicionar>
           <ButtonAviso></ButtonAviso>
-          <ButtonDesempenho></ButtonDesempenho>
+          <ButtonDesempenho onClick={openModalDesempenho}></ButtonDesempenho>
         </ContainerButtonsModal>
       </ContainerButtons>
       <ContainerPerfil>
@@ -82,6 +87,7 @@ const Header = ({ openModal }) => {
         </ContainerImgPerfil>
       </ContainerPerfil>
       <Modal isOpen={showModal} closeModal={toggleModal} />
+      <Desempenho isOpen={showModalDesempenho} closeModalDesempenho={toggleModalDesempenho} />
     </ContainerHeader>
   );
 };

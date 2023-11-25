@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import Header from "../../components/HeaderPrincipal/index.js";
 import SideBar from "../../components/MenuLateral/index.js";
 import Modal from "../../components/ModalTarefa";
+import Desempenho from "../../components/ModalDesempenho";
 import Tarefa from "../../components/Tarefas/index.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,21 +21,28 @@ const Home = () => {
   const { token, setUserName, logout } = useAuth(); // Obtendo o token do contexto de autenticação
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalDesempenhoOpen, setIsModalDesempenhoOpen] = useState(false);
   const { sideBarIsActive } = useAuth();
 
   const openModal = () => {
     setIsModalOpen(true);
   };
+  const openModalDesempenho = () => {
+    setIsModalDesempenhoOpen(true);
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+  const closeModalDesempenho = () => {
+    setIsModalDesempenhoOpen(false);
   };
 
   useEffect(() => {
     const localToken = localStorage.getItem("token");
     if (!token && !localToken) {
-      logout();
-      navigate("/login");
+      //logout();
+   // navigate("/login");
     } else {
       const authToken = token || localToken;
       axios
@@ -69,7 +77,7 @@ const Home = () => {
 
   return (
     <AppBody>
-      <Header openModal={openModal} />
+      <Header openModal={openModal}openModalDesempenho={openModalDesempenho} />
       <ContainerMainPrincial>
         <SideBar />
         <Main $isActive={sideBarIsActive}>
@@ -80,6 +88,7 @@ const Home = () => {
         </Main>
       </ContainerMainPrincial>
       {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
+      {isModalDesempenhoOpen && <Desempenho isOpen={isModalDesempenhoOpen} closeModalDesempenho={closeModalDesempenho} />}
     </AppBody>
   );
 };

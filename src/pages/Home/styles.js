@@ -17,6 +17,7 @@ export const Main = styled.main`
   transition-property: left;
   display: flex;
   justify-content: center;
+  height:100vh;
 `;
 export const ContainerLembrete = styled.div`
   background-color: #d9d9d9;

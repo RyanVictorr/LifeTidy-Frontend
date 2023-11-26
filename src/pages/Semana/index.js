@@ -68,7 +68,7 @@ const Semana = () => {
              <Header openModal={openModal} />
              <ContainerMainPrincipalHoje>
             <SideBar />
-            <Main $isActive={sideBarIsActive}>
+            <Main >
 
                     <ContainerSubEsquerda>
                       <ContainerHoje>

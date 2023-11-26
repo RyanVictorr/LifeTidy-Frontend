@@ -11,8 +11,7 @@ display: flex;
     flex-wrap: wrap;
     width: 100%;
     position: relative;
-    left: ${props => props.$isActive ? '0' : '-130px'};
-    transition: 0.6s ease;
+    margin-right:9%;
     transition-property: left;
     justify-content: space-evenly;
    
@@ -22,7 +21,7 @@ export const ContainerSubEsquerda = styled.div`
 background-color: #D9D9D9;
 padding: 10px;
 border-radius: 15px;
-margin: 10px 5px;
+margin: 30px 5px;
 height: 730px;
 min-width: 346px;
 `;
@@ -32,7 +31,7 @@ margin-left: 0;
 background-color: #D9D9D9;
     padding: 10px;
     border-radius: 15px;
-    margin: 10px 5px;
+    margin: 30px 5px;
     height: 730px;
     min-width: 346px;
     

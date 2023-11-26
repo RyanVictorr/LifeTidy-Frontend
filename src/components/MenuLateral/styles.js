@@ -6,7 +6,7 @@ export const MainPrincipal = styled.div`
 `;
 
 export const DivLateral = styled.div`
-height: 100vh;
+
 `;
 export const SideBar = styled.div`
   width: 193px;
@@ -105,6 +105,7 @@ export const StyledIcon = styled(FontAwesomeIcon)`
 
 export const NavLateral = styled.nav`
   height: 100%;
+  
 
   @media (max-height: 800px) {
       height: 100%;

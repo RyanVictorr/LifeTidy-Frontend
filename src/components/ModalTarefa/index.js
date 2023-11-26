@@ -160,6 +160,7 @@ const Modal = ({ isOpen, closeModal }) => {
               type="text"
               id="tarefa"
               name="nome_tarefa"
+              maxLength={50}
               value={formState.nome_tarefa}
               onChange={handleChange}
             ></TextArea>
@@ -170,6 +171,7 @@ const Modal = ({ isOpen, closeModal }) => {
             <TextArea
               type="text"
               name="descricao"
+              maxLength={120}
               value={formState.descricao}
               onChange={handleChange}
             ></TextArea>

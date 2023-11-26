@@ -27,6 +27,7 @@ export const H2 = styled.h2`
   margin: 4px;
   max-width: 137px;
   font-size: 14px;
+  word-break: break-word;
 `;
 export const Prazos = styled.div`
   display: flex;
@@ -119,11 +120,13 @@ export const DescricaoDetalhada = styled.div`
   border-radius: 15px;
   min-height: 100px;
   width: 150px;
+  word-break: break-word;
 `;
 
 export const IconDescricao = styled.p`
  font-size: 12px;
  font-weight: bolder;
+ 
 `;
 
 export const EditarExcluir = styled.div`

@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [userName, setUserName] = useState("");
   const [token, setToken] = useState("");
   const [sideBarIsActive, setSideBarIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   //Tarefas
   const [tarefas, setTarefas] = useState([]);
@@ -73,6 +74,8 @@ export const AuthProvider = ({ children }) => {
         tarefas,
         setTarefas,
         fetchTarefas,
+        isActive,
+      setIsActive,
       }}
     >
       {children}

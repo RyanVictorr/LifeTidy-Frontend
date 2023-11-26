@@ -17,7 +17,6 @@ export const Main = styled.main`
   transition-property: left;
   display: flex;
   justify-content: center;
-  height:100vh;
 `;
 export const ContainerLembrete = styled.div`
   background-color: #d9d9d9;
@@ -26,6 +25,7 @@ export const ContainerLembrete = styled.div`
   margin: 10px 5px;
   min-width: 82%;
   max-width: 1150px;
+  min-height: 100vh;
 `;
 
 export const H2TelaInicial = styled.h2`

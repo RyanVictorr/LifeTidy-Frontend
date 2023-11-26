@@ -69,7 +69,7 @@ const Hoje = () => {
              <Header openModal={openModal} />
              <ContainerMainPrincipalHoje>
             <SideBar />
-            <Main >
+            <Main $isActive={sideBarIsActive}>
 
                     <ContainerSubEsquerda>
                       <ContainerHoje>

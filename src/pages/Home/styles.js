@@ -12,8 +12,7 @@ export const Main = styled.main`
   flex-wrap: wrap;
   width: 100%;
   position: relative;
-  left: ${props => props.$isActive ? '0' : '-130px'};
-  transition: 0.6s ease;
+ 
   transition-property: left;
   display: flex;
   justify-content: center;

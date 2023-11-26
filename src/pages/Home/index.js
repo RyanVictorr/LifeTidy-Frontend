@@ -80,7 +80,7 @@ const Home = () => {
       <Header openModal={openModal}openModalDesempenho={openModalDesempenho} />
       <ContainerMainPrincial>
         <SideBar />
-        <Main $isActive={sideBarIsActive}>
+        <Main >
           <ContainerLembrete>
             <H2TelaInicial>LEMBRETES</H2TelaInicial>
             <Tarefa />

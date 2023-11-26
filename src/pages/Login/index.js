@@ -27,6 +27,7 @@ import {
 } from "./styles";
 
 const App = () => {
+  const { fetchTarefas } = useAuth();
   const axiosInstance = axios.create({
     withCredentials: true,
   });
@@ -65,7 +66,7 @@ const App = () => {
        
         localStorage.setItem("token", response.data.Token);
         setToken(response.data.Token);
-
+        fetchTarefas();
         navigate('/home');
       } else {
         console.error("Erro no login - código de status:", response.status);

@@ -13,12 +13,12 @@ import {
   ContainerMainPrincial,
   Main,
   ContainerLembrete,
-  H2TelaInicial
+  H2TelaInicial,
 } from "./styles";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { token, setUserName, logout } = useAuth(); // Obtendo o token do contexto de autenticação
+  const { token, setUserName, logout, fetchTarefas } = useAuth(); // Obtendo o token do contexto de autenticação
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalDesempenhoOpen, setIsModalDesempenhoOpen] = useState(false);
@@ -41,8 +41,8 @@ const Home = () => {
   useEffect(() => {
     const localToken = localStorage.getItem("token");
     if (!token && !localToken) {
-      //logout();
-   // navigate("/login");
+      logout();
+      navigate("/login");
     } else {
       const authToken = token || localToken;
       axios
@@ -75,9 +75,13 @@ const Home = () => {
     }
   }, [navigate, setUserName, token, logout]);
 
+  useEffect(() => {
+    fetchTarefas();
+  }, [token]);
+
   return (
     <AppBody>
-      <Header openModal={openModal}openModalDesempenho={openModalDesempenho} />
+      <Header openModal={openModal} openModalDesempenho={openModalDesempenho} />
       <ContainerMainPrincial>
         <SideBar />
         <Main $isActive={sideBarIsActive}>
@@ -88,7 +92,12 @@ const Home = () => {
         </Main>
       </ContainerMainPrincial>
       {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
-      {isModalDesempenhoOpen && <Desempenho isOpen={isModalDesempenhoOpen} closeModalDesempenho={closeModalDesempenho} />}
+      {isModalDesempenhoOpen && (
+        <Desempenho
+          isOpen={isModalDesempenhoOpen}
+          closeModalDesempenho={closeModalDesempenho}
+        />
+      )}
     </AppBody>
   );
 };

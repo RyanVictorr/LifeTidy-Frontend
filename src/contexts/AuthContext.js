@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -6,6 +7,9 @@ export const AuthProvider = ({ children }) => {
   const [userName, setUserName] = useState("");
   const [token, setToken] = useState("");
   const [sideBarIsActive, setSideBarIsActive] = useState(false);
+
+  //Tarefas
+  const [tarefas, setTarefas] = useState([]);
 
   // Carregar token e nome do usuário do localStorage no carregamento inicial
   useEffect(() => {
@@ -27,6 +31,29 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("userName", userName);
   }, [token, userName]);
 
+  // Buscar tarefas do servidor
+  const fetchTarefas = async () => {
+    try {
+      const token = localStorage.getItem("token"); // Recupera o token do localStorage
+
+      const response = await axios.get(
+        "http://localhost:4000/tarefas/buscarTarefas",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setTarefas(response.data); // Atualiza o estado com as tarefas recebidas do backend
+    } catch (error) {
+      console.error("Erro ao buscar tarefas:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTarefas(); // Chama a função para buscar as tarefas quando o componente é montado
+  }, []);  // O array vazio como segundo argumento faz com que o useEffect execute apenas uma vez, quando o componente é montado
+
   // Função para realizar o logout
   const logout = () => {
     setUserName("");
@@ -43,6 +70,9 @@ export const AuthProvider = ({ children }) => {
         logout,
         sideBarIsActive,
         setSideBarIsActive,
+        tarefas,
+        setTarefas,
+        fetchTarefas,
       }}
     >
       {children}

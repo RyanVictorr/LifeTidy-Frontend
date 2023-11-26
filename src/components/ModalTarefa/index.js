@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../../contexts/AuthContext";
 import {
   Dialog,
   ContainerAdicionarTarefa,
@@ -37,6 +38,7 @@ const Modal = ({ isOpen, closeModal }) => {
     importancia: "",
     status: ""
   });
+  const { fetchTarefas } = useAuth();
 
   const handleChange = (event) => {
     setFormState({
@@ -46,7 +48,7 @@ const Modal = ({ isOpen, closeModal }) => {
   };
 
  axios.defaults.withCredentials = true;
-const handleSubmit = async (event) => {
+ const handleSubmit = async (event) => {
   event.preventDefault();
   try {
     const token = localStorage.getItem("token");
@@ -59,6 +61,7 @@ const handleSubmit = async (event) => {
         },
       }
     );
+    fetchTarefas();
     closeModal();
   } catch (error) {
     console.error(error);

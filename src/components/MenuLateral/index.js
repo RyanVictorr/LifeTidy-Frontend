@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import {
   MainPrincipal,
@@ -26,11 +26,12 @@ import {
   faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 const Sidebar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const [isActive, setIsActive] = useState(false);
-  const { setSideBarIsActive } = useAuth();
+  const { setSideBarIsActive, isActive, setIsActive } = useAuth();
 
   const toggleSidebar = () => {
     setIsActive(!isActive);
@@ -49,19 +50,19 @@ const Sidebar = () => {
               <StyledIcon icon={faTimes} />
             </CloseButton>
             <Menu>
-              <MenuItem $principal>
+              <MenuItem $principal $active={location.pathname === "/home"}>
                 <LinkSideBar onClick={() => navigate("/home")}>
                   <StyledIcon icon={faHome} />
                   INICIO
                 </LinkSideBar>
               </MenuItem>
-              <MenuItem>
+              <MenuItem $active={location.pathname === "/hoje"}>
                 <LinkSideBar onClick={() => navigate("/hoje")}>
                   <StyledIcon icon={faCalendar} />
                   HOJE
                 </LinkSideBar>
               </MenuItem>
-              <MenuItem>
+              <MenuItem $active={location.pathname === "/semana"}>
                 <LinkSideBar onClick={() => navigate("/semana")}>
                   <StyledIcon icon={faCalendarMinus} />
                   SEMANA
@@ -75,14 +76,14 @@ const Sidebar = () => {
                   </LinkSideBar>
                   <P>(Desenvolvimento)</P>
               </MenuItem>
-              <MenuItem>
+              <MenuItem $active={location.pathname === "/compras"}>
               <LinkSideBar onClick={() => navigate("/compras")}>
                   <StyledIcon icon={faShoppingCart} />
                   COMPRAS
                   </LinkSideBar>
                   
               </MenuItem>
-              <MenuItem>
+              <MenuItem $active={location.pathname === "/agenda"}>
               <LinkSideBar onClick={() => navigate("/agenda")}>
                   <StyledIcon icon={faCalendarAlt} />
                   AGENDA

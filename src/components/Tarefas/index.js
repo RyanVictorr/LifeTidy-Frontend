@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+
+import { useAuth } from "../../contexts/AuthContext";
+
 import {
   ContainerPaiLembretes,
   ContainerLembretes,
@@ -23,29 +24,7 @@ import {
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Tarefa = () => {
-  const [tarefas, setTarefas] = useState([]);
-
-  useEffect(() => {
-    async function fetchTarefas() {
-      try {
-        const token = localStorage.getItem("token"); // Recupera o token do localStorage
-
-        const response = await axios.get(
-          "http://localhost:4000/tarefas/buscarTarefas",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setTarefas(response.data); // Atualiza o estado com as tarefas recebidas do backend
-      } catch (error) {
-        console.error("Erro ao buscar tarefas:", error);
-      }
-    }
-
-    fetchTarefas(); // Chama a função para buscar as tarefas quando o componente é montado
-  }, []); // O array vazio como segundo argumento faz com que o useEffect execute apenas uma vez, quando o componente é montado
+  const { tarefas } = useAuth();
 
   return (
     <ContainerPaiLembretes>

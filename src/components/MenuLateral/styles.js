@@ -6,11 +6,11 @@ export const MainPrincipal = styled.div`
 `;
 
 export const DivLateral = styled.div`
-
+height: 100%;
 `;
 export const SideBar = styled.div`
   width: 193px;
-  height: 100vh;
+  height: 100%;
   position: relative;
   top: 0;
   left: -106%;
@@ -67,7 +67,9 @@ export const MenuItem = styled.div`
     margin-right: 8px;
     font-size: 23px;
   }
-  background-color: ${(props) => (props.$principal ? "#021016" : "#031E2C")};
+  ${props => props.$active && css`
+    background-color: #021016;
+  `}
   cursor: ${(props) => (props.$estudo ? "not-allowed" : "pointer")};
 `;
 

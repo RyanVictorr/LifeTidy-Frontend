@@ -117,6 +117,7 @@ export const TextArea = styled.textarea`
     text-align: start;
     padding: 4px 0 0 10px;
     width: 90%;
+    max-height: 80px;
     
 `;
 

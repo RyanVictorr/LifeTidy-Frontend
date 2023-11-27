@@ -47,7 +47,7 @@ const Header = ({ openModal,openModalDesempenho }) => {
     try {
       await axios.post('http://localhost:4000/usuarios/logout');
       logout();
-      navigate('/landingpage');
+      navigate('/');
     } catch (error) {
       console.error('Erro ao realizar logout:', error);
       // Trate o erro conforme necessário
@@ -59,7 +59,7 @@ const Header = ({ openModal,openModalDesempenho }) => {
   return (
     <ContainerHeader>
       <ContainerLogo>
-        <Link onClick={() => navigate("/landingpage")}>
+        <Link onClick={() => navigate("/")}>
           <ContainerImg></ContainerImg>
         </Link>
       </ContainerLogo>

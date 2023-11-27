@@ -58,12 +58,12 @@ const Home = () => {
           if (error.response && error.response.status === 401) {
             // Se receber um status 401 (Não Autorizado), o token pode ser inválido ou expirado
             logout(); // Limpar os dados de autenticação
-            navigate("/landingpage"); // Redirecionar para a página de login
+            navigate("/"); // Redirecionar para a página de login
           } else {
             console.error("Erro ao buscar o nome do usuário:", error);
             console.log(error);
             logout();
-            navigate("/landingpage");
+            navigate("/");
           }
         });
     }

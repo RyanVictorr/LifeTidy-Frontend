@@ -72,7 +72,7 @@ const App = () => {
         <Nav>
           <ContainerNav>
             <ContainerLogo>
-              <Link onClick={() => navigate("/landingpage")}>
+              <Link onClick={() => navigate("/")}>
                 <ImageLogo src={logo} alt={"Logo-LifeTidy"} />
               </Link>
             </ContainerLogo>
@@ -287,7 +287,7 @@ const App = () => {
         <ContainerFooter>
           <FooterTop>
             <FooterLogo>
-              <Link onClick={() => navigate("/landingpage")}>
+              <Link onClick={() => navigate("/")}>
                 <ImageLogoFooter src={logo} alt="LifeTidy Logo" />
               </Link>
             </FooterLogo>

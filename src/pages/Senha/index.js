@@ -37,7 +37,7 @@ const App = () => {
                 </Main>
                         <ContainerRecuperacao>
                         <ContainerLogo>
-                        <Link onClick={() => navigate("/landingpage")}>
+                        <Link onClick={() => navigate("/")}>
                             <ImageLogo src={logo} alt={"Logo-LifeTidy"} />
                         </Link>
                         </ContainerLogo>

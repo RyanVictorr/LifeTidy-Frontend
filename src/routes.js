@@ -19,7 +19,7 @@ function MyRoutes() {
         <AuthProvider>
             <Router>
                 <Routes>
-                    <Route path="/landingpage" element={<LandingPage/>} />
+                    <Route path="/" element={<LandingPage/>} />
                     <Route path="/sobrenos" element={<SobreNos/>} />
                     <Route path='/cadastro' element={<Cadastro/>}/>
                     <Route path='/login' element={<Login/>} />

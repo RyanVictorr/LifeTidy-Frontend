@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import Header from "../../components/HeaderPrincipal/index.js";
 import SideBar from "../../components/MenuLateral/index.js";
-import Modal from "../../components/ModalTarefa";
-import Desempenho from "../../components/ModalDesempenho";
+//import Modal from "../../components/ModalTarefa";
+//import Desempenho from "../../components/ModalDesempenho";
+import NovaTarefaModal from "../../components/NovaTarefaModal";
 import Tarefa from "../../components/Tarefas/index.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,22 +21,15 @@ const Home = () => {
   const navigate = useNavigate();
   const { token, setUserName, logout, fetchTarefas } = useAuth(); // Obtendo o token do contexto de autenticação
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalDesempenhoOpen, setIsModalDesempenhoOpen] = useState(false);
+  const [isModalBootstrapOpen, setIsModalBootstrapOpen] = useState(false); // Estado para a nova modal Bootstrap
   const { sideBarIsActive } = useAuth();
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-  const openModalDesempenho = () => {
-    setIsModalDesempenhoOpen(true);
+  const openModalBootstrap = () => {
+    setIsModalBootstrapOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const closeModalDesempenho = () => {
-    setIsModalDesempenhoOpen(false);
+  const closeModalBootstrap = () => {
+    setIsModalBootstrapOpen(false);
   };
 
   useEffect(() => {
@@ -77,11 +71,12 @@ const Home = () => {
 
   useEffect(() => {
     fetchTarefas();
+   // eslint-disable-next-line
   }, [token]);
 
   return (
     <AppBody>
-      <Header openModal={openModal} openModalDesempenho={openModalDesempenho} />
+      <Header openModal={openModalBootstrap}  />
       <ContainerMainPrincial>
         <SideBar />
         <Main $isActive={sideBarIsActive}>
@@ -91,11 +86,10 @@ const Home = () => {
           </ContainerLembrete>
         </Main>
       </ContainerMainPrincial>
-      {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
-      {isModalDesempenhoOpen && (
-        <Desempenho
-          isOpen={isModalDesempenhoOpen}
-          closeModalDesempenho={closeModalDesempenho}
+      {isModalBootstrapOpen && (
+        <NovaTarefaModal
+          isOpen={isModalBootstrapOpen}
+          closeModal={closeModalBootstrap}
         />
       )}
     </AppBody>

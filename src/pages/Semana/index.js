@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import Header from "../../components/HeaderPrincipal/index.js";
 import SideBar from "../../components/MenuLateral/index.js";
-import Modal from "../../components/ModalTarefa";
+import NovaTarefaModal from "../../components/NovaTarefaModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import {
   AppBody,
   Main,
-  ContainerMainPrincipal,
+  ContainerMainPrincipalHoje,
   ContainerSubEsquerda,
   ContainerSubDireita,
   ContainerSubBaixo,
-  ContainerSemana,
+  ContainerHoje,
   PDataSemana,
   ContainerBorda,
   ContainerTarefa,
@@ -23,15 +23,18 @@ const Semana = () => {
   const navigate = useNavigate();
   const { token, setUserName, logout } = useAuth(); // Obtendo o token do contexto de autenticação
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const [isModalBootstrapOpen, setIsModalBootstrapOpen] = useState(false); // Estado para a nova modal Bootstrap
   const { sideBarIsActive } = useAuth();
-  const openModal = () => {
-    setIsModalOpen(true);
+
+  const openModalBootstrap = () => {
+    setIsModalBootstrapOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeModalBootstrap = () => {
+    setIsModalBootstrapOpen(false);
   };
+
 
   useEffect(() => {
     const localToken = localStorage.getItem("token");
@@ -65,34 +68,39 @@ const Semana = () => {
 
   return (
     <AppBody>
-      <Header openModal={openModal} />
-      <ContainerMainPrincipal>
+      <Header openModal={openModalBootstrap} />
+      <ContainerMainPrincipalHoje>
         <SideBar />
         <Main $isActive={sideBarIsActive}>
           <ContainerSubEsquerda>
-            <ContainerSemana>
+            <ContainerHoje>
               <PDataSemana>14/06/2023</PDataSemana>
               <ContainerBorda></ContainerBorda>
               <ContainerTarefa></ContainerTarefa>
-            </ContainerSemana>
+            </ContainerHoje>
           </ContainerSubEsquerda>
           <ContainerSubDireita>
-            <ContainerSemana>
+            <ContainerHoje>
               <PDataSemana>15/06/2023</PDataSemana>
               <ContainerBorda></ContainerBorda>
               <ContainerTarefa></ContainerTarefa>
-            </ContainerSemana>
+            </ContainerHoje>
           </ContainerSubDireita>
           <ContainerSubBaixo>
-            <ContainerSemana>
+            <ContainerHoje>
               <PDataSemana>16/06/2023</PDataSemana>
               <ContainerBorda></ContainerBorda>
               <ContainerTarefa></ContainerTarefa>
-            </ContainerSemana>
+            </ContainerHoje>
           </ContainerSubBaixo>
         </Main>
-      </ContainerMainPrincipal>
-      {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
+      </ContainerMainPrincipalHoje>
+      {isModalBootstrapOpen && (
+        <NovaTarefaModal
+          isOpen={isModalBootstrapOpen}
+          closeModal={closeModalBootstrap}
+        />
+      )}
     </AppBody>
   );
 };

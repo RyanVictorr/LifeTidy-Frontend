@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import Header from "../../components/HeaderPrincipal/index.js";
 import SideBar from "../../components/MenuLateral/index.js";
-import Modal from "../../components/ModalTarefa";
+import NovaTarefaModal from "../../components/NovaTarefaModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -25,14 +25,15 @@ const Hoje = () => {
     const navigate = useNavigate();
   const { token, setUserName, logout } = useAuth(); // Obtendo o token do contexto de autenticação
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalBootstrapOpen, setIsModalBootstrapOpen] = useState(false); // Estado para a nova modal Bootstrap
   const { sideBarIsActive } = useAuth();
-  const openModal = () => {
-    setIsModalOpen(true);
+
+  const openModalBootstrap = () => {
+    setIsModalBootstrapOpen(true);
   };
- 
-  const closeModal = () => {
-    setIsModalOpen(false);
+
+  const closeModalBootstrap = () => {
+    setIsModalBootstrapOpen(false);
   };
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const Hoje = () => {
 
     return(
         <AppBody>
-             <Header openModal={openModal} />
+             <Header openModal={openModalBootstrap} />
              <ContainerMainPrincipalHoje>
             <SideBar />
             <Main $isActive={sideBarIsActive}>
@@ -98,7 +99,12 @@ const Hoje = () => {
 
             </Main>
             </ContainerMainPrincipalHoje>
-            {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
+            {isModalBootstrapOpen && (
+        <NovaTarefaModal
+          isOpen={isModalBootstrapOpen}
+          closeModal={closeModalBootstrap}
+        />
+      )}
         </AppBody>
     );
 };

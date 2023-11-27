@@ -3,7 +3,7 @@ export const AppBody = styled.div`
   height: 100%;
   background-color: #0a3950;
 `;
-export const ContainerMainPrincipal = styled.div`
+export const ContainerMainPrincipalHoje = styled.div`
   display: flex;
 `;
 export const Main = styled.div`
@@ -48,7 +48,7 @@ export const ContainerSubBaixo = styled.div`
   min-width: 346px;
   margin-bottom: 40px;
 `;
-export const ContainerSemana = styled.div`
+export const ContainerHoje = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;

@@ -11,6 +11,7 @@ import Header from './components/HeaderPrincipal'
 import Modal from './components/ModalTarefa'
 import Hoje from './pages/Hoje'
 import Semana from './pages/Semana'
+import Compras from './pages/Compras'
 import Desempenho from './components/ModalDesempenho'
 
 function MyRoutes() {
@@ -29,6 +30,7 @@ function MyRoutes() {
                     <Route path='/hoje' element={<Hoje/>} />
                     <Route path='/semana' element={<Semana/>} />
                     <Route path='/desempenho' element={<Desempenho/>} />
+                    <Route path='/compras' element={<Compras/>} />
                 </Routes>
             </Router>
         </AuthProvider>

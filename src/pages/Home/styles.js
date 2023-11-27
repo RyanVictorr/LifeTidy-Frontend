@@ -5,6 +5,7 @@ export const AppBody = styled.div`
   background-color: #0a3950;
 `;
 export const ContainerMainPrincial = styled.div`
+
   display: flex;
 `;
 export const Main = styled.main`
@@ -12,9 +13,9 @@ export const Main = styled.main`
   flex-wrap: wrap;
   width: 100%;
   position: relative;
- 
-  transition-property: left;
-  display: flex;
+    left: ${(props) => (props.$isActive ? "0" : "-130px")};
+    transition: 0.6s ease;
+    transition-property: left;
   justify-content: center;
 `;
 export const ContainerLembrete = styled.div`

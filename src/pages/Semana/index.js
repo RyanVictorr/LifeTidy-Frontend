@@ -9,11 +9,11 @@ import axios from "axios";
 import {
   AppBody,
   Main,
-  ContainerMainPrincipalHoje,
+  ContainerMainPrincipal,
   ContainerSubEsquerda,
   ContainerSubDireita,
   ContainerSubBaixo,
-  ContainerHoje,
+  ContainerSemana,
   PDataSemana,
   ContainerBorda,
   ContainerTarefa,
@@ -66,32 +66,32 @@ const Semana = () => {
   return (
     <AppBody>
       <Header openModal={openModal} />
-      <ContainerMainPrincipalHoje>
+      <ContainerMainPrincipal>
         <SideBar />
         <Main $isActive={sideBarIsActive}>
           <ContainerSubEsquerda>
-            <ContainerHoje>
+            <ContainerSemana>
               <PDataSemana>14/06/2023</PDataSemana>
               <ContainerBorda></ContainerBorda>
               <ContainerTarefa></ContainerTarefa>
-            </ContainerHoje>
+            </ContainerSemana>
           </ContainerSubEsquerda>
           <ContainerSubDireita>
-            <ContainerHoje>
+            <ContainerSemana>
               <PDataSemana>15/06/2023</PDataSemana>
               <ContainerBorda></ContainerBorda>
               <ContainerTarefa></ContainerTarefa>
-            </ContainerHoje>
+            </ContainerSemana>
           </ContainerSubDireita>
           <ContainerSubBaixo>
-            <ContainerHoje>
+            <ContainerSemana>
               <PDataSemana>16/06/2023</PDataSemana>
               <ContainerBorda></ContainerBorda>
               <ContainerTarefa></ContainerTarefa>
-            </ContainerHoje>
+            </ContainerSemana>
           </ContainerSubBaixo>
         </Main>
-      </ContainerMainPrincipalHoje>
+      </ContainerMainPrincipal>
       {isModalOpen && <Modal isOpen={isModalOpen} closeModal={closeModal} />}
     </AppBody>
   );

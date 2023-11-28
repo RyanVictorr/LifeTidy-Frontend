@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
-import './customModalStyles.css'; // Importe o arquivo CSS
+import "./customModalStyles.css"; // Importe o arquivo CSS
 import {
   ContainerAdicionarTarefa,
   ContainerH2Tarefa,
@@ -24,20 +24,21 @@ import {
   DivButtonNovaTarefa,
   ButtonCriarTarefa,
   ButtonCancelar,
-} from './styles';
-
+  CustomLoader,
+  ContainerCustomLoader,
+} from "./styles";
 
 const NovaTarefaModal = ({ isOpen, closeModal }) => {
   const [formState, setFormState] = useState({
-    nome_tarefa: '',
-    descricao: '',
-    categoria: '',
-    data_inicio: '',
-    data_fim: '',
-    hora_inicio: '',
-    hora_fim: '',
-    importancia: '',
-    status: '',
+    nome_tarefa: "",
+    descricao: "",
+    categoria: "",
+    data_inicio: "",
+    data_fim: "",
+    hora_inicio: "",
+    hora_fim: "",
+    importancia: "",
+    status: "",
   });
   const { fetchTarefas } = useAuth();
   const handleChange = (event) => {
@@ -47,38 +48,42 @@ const NovaTarefaModal = ({ isOpen, closeModal }) => {
     });
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+
   axios.defaults.withCredentials = true;
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  try {
-    const token = localStorage.getItem("token");
-    await axios.post(
-      "http://localhost:4000/tarefas/adicionar",
-      formState,
-      {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post("http://localhost:4000/tarefas/adicionar", formState, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
-    );
-    fetchTarefas();
-    closeModal();
-  } catch (error) {
-    console.error(error);
-  }
-};
+      });
+      fetchTarefas();
+      closeModal();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    
-      <Modal show={isOpen} onHide={closeModal} dialogClassName="custom-modal-styles">
-        <ContainerAdicionarTarefa>
-          <ContainerH2Tarefa>
-            <H2AdicionarTarefa>ADICIONAR TAREFA</H2AdicionarTarefa>
-            <ContainerButtonExit>
-              <StyledIcon icon={faClose} onClick={closeModal} />
-            </ContainerButtonExit>
-          </ContainerH2Tarefa>
-          <FormDetalhesTarefas onSubmit={handleSubmit}>
+    <Modal
+      show={isOpen}
+      onHide={closeModal}
+      dialogClassName="custom-modal-styles"
+    >
+      <ContainerAdicionarTarefa>
+        <ContainerH2Tarefa>
+          <H2AdicionarTarefa>ADICIONAR TAREFA</H2AdicionarTarefa>
+          <ContainerButtonExit>
+            <StyledIcon icon={faClose} onClick={closeModal} />
+          </ContainerButtonExit>
+        </ContainerH2Tarefa>
+        <FormDetalhesTarefas onSubmit={handleSubmit}>
           <ContainerCategoria>
             <H4InfomacoesInputs>CATEGORIA</H4InfomacoesInputs>
             <SelectInputsWidth
@@ -159,7 +164,7 @@ const handleSubmit = async (event) => {
               onChange={handleChange}
             ></TextArea>
           </ContainerDescricaoTarefa>
-          
+
           <ContainerDescricaoTarefa>
             <H4InfomacoesInputs>DESCRIÇÃO</H4InfomacoesInputs>
             <TextArea
@@ -170,14 +175,19 @@ const handleSubmit = async (event) => {
               onChange={handleChange}
             ></TextArea>
           </ContainerDescricaoTarefa>
+          <ContainerCustomLoader>
+          {isLoading && <CustomLoader />}
+          </ContainerCustomLoader>
           <DivButtonNovaTarefa>
-          <ButtonCriarTarefa type="submit">CRIAR TAREFA</ButtonCriarTarefa>
-          <ButtonCancelar onClick={closeModal}>CANCELAR</ButtonCancelar>
+            <ButtonCriarTarefa type="submit" disabled={isLoading}>
+              CRIAR TAREFA
+            </ButtonCriarTarefa>
+            <ButtonCancelar onClick={closeModal}>CANCELAR</ButtonCancelar>
           </DivButtonNovaTarefa>
         </FormDetalhesTarefas>
-        </ContainerAdicionarTarefa>
-      </Modal>
+      </ContainerAdicionarTarefa>
+    </Modal>
   );
-}
+};
 
 export default NovaTarefaModal;

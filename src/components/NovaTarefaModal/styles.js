@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Modal } from 'react-bootstrap';
+import { Modal } from "react-bootstrap";
 
 export const CustomModal = styled(Modal)`
   .modal-content {
@@ -47,7 +47,7 @@ export const ContainerButtonExit = styled.div`
   display: flex;
   justify-content: end;
   height: 36px;
-  color: #FFF;
+  color: #fff;
 `;
 export const StyledIcon = styled(FontAwesomeIcon)`
   margin: 0.1em 0.2em 0.8em 0;
@@ -153,7 +153,44 @@ export const ContainerDescricaoTarefa = styled.div`
 export const DivButtonNovaTarefa = styled.div`
   justify-content: space-evenly;
   display: flex;
-  margin-top: 2em;
+  margin-top: 1em;
+`;
+
+export const ContainerCustomLoader = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 5px;
+`
+
+export const CustomLoader = styled.div`
+  width: 40px;
+  height: 40px;
+  --c: radial-gradient(farthest-side, #5F98B4 92%, #0000);
+  background: 
+    var(--c) 50% 0, 
+    var(--c) 50% 100%, 
+    var(--c) 100% 50%, 
+    var(--c) 0 50%;
+  background-size: 9px 9px;
+  background-repeat: no-repeat;
+  animation: s8 0.6s linear infinite;
+  position: relative;
+
+  &::before {    
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: 3px;
+    background: repeating-conic-gradient(#0000 0 35deg, #5F98B4 0 90deg);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
+    border-radius: 50%;
+  }
+
+  @keyframes s8 { 
+    100% { transform: rotate(.5turn) }
+  }
 `;
 
 export const ButtonCriarTarefa = styled.button`
@@ -161,31 +198,31 @@ export const ButtonCriarTarefa = styled.button`
   width: 12em;
   border: none;
   border-radius: 25px;
+  background-color: #0a3950;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: 1.5s ease;
+  &:hover {
+    background-color: #2f6f8e;
+  }
+`;
+
+export const ButtonCancelar = styled.div`
+  height: 2.5em;
+  width: 7em;
+  border: none;
+  border-radius: 25px;
   background-color: #d9d9d9;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: 1.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
     background-color: #9e9e9e;
-  }
-`;
-
-export const ButtonCancelar = styled.div`
-height: 2.5em;
-    width: 7em;
-    border: none;
-    border-radius: 25px;
-    background-color: #0a3950;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 1.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFF;
-  &:hover {
-    background-color: #2f6f8e;
   }
 `;

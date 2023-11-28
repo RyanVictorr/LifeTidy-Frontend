@@ -28,7 +28,8 @@ import {
   UserIcone,
   EmailIcone,
   PasswordIcone,
-  TelIcone
+  TelIcone,
+  CustomLoader,
 } from "./styles";
 
 const App = () => {
@@ -70,9 +71,12 @@ const App = () => {
     return value;
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+
   // Handler para submissão do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const { nome_usuario, email, senha, confirmarSenha, telefone } = formData;
     const telefoneSemFormatacao = telefone.replace(/\D/g, "");
@@ -80,6 +84,7 @@ const App = () => {
     // Verifica se as senhas coincidem
     if (senha !== confirmarSenha) {
       setFormErrors(["As senhas não coincidem."]);
+      setIsLoading(false);
       return;
     }
 
@@ -108,6 +113,8 @@ const App = () => {
       } else {
         console.error("Erro ao cadastrar o usuário", error);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -183,8 +190,8 @@ const App = () => {
 
               {formErrors.length > 0 && (
                 <div>
-                  <p style={{ fontWeight: "bold" }}>Erros encontrados:</p>
-                  <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
+                  <p style={{ fontWeight: "bold", marginBottom: 0}}>Erros encontrados:</p>
+                  <ul style={{ listStyleType: "none", paddingLeft: 0, marginBottom: 0 }}>
                     {formErrors.map((error, index) => (
                       <li key={index} style={{ color: "red" }}>
                         {error}
@@ -199,7 +206,10 @@ const App = () => {
                 <LinkLogin onClick={() => navigate("/login")}>Login!</LinkLogin>
               </ContainerText>
               <ContainerLoginCom>
-                <ButtonCadastro type="submit">CADASTRAR</ButtonCadastro>
+                {isLoading && <CustomLoader />}
+                <ButtonCadastro type="submit" disabled={isLoading}>
+                  CADASTRAR
+                </ButtonCadastro>
               </ContainerLoginCom>
             </Form>
           </Main>

@@ -104,12 +104,14 @@ export const ContainerText = styled.div`
   align-items: center;
   width: 100%;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: 8px;
+  align-items: center;
 `;
 export const PLogin = styled.p`
   font-weight: 700;
   margin-right: 5px;
   font-size: 13px;
+  margin-bottom: 0;
 `;
 export const LinkSenha = styled.a`
   color: #5f98b4;
@@ -118,6 +120,44 @@ export const LinkSenha = styled.a`
   &:hover {
     color: #0d4766;
     text-decoration: underline;
+  }
+`;
+
+export const ContainerLoginCom = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const CustomLoader = styled.div`
+  width: 32px;
+  height: 32px;
+  --c: radial-gradient(farthest-side, #5F98B4 92%, #0000);
+  background: 
+    var(--c) 50% 0, 
+    var(--c) 50% 100%, 
+    var(--c) 100% 50%, 
+    var(--c) 0 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  animation: s8 0.5s linear infinite;
+  position: relative;
+
+  &::before {    
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: 3px;
+    background: repeating-conic-gradient(#0000 0 35deg, #5F98B4 0 90deg);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 1px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 1px), #000 0);
+    border-radius: 50%;
+  }
+
+  @keyframes s8 { 
+    100% { transform: rotate(.5turn) }
   }
 `;
 
@@ -149,6 +189,7 @@ export const PInscrevaSe = styled.p`
   font-weight: 700;
   margin-right: 5px;
   margin-top: 15px;
+  margin-bottom: 0;
 `;
 export const LinkInscrevaSe = styled.a`
   color: #5f98b4;
@@ -163,4 +204,5 @@ export const LinkInscrevaSe = styled.a`
 
 export const ErrorText = styled.p`
   color: red;
+  margin: 8px 0 0 0;
 `;

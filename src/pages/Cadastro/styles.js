@@ -16,8 +16,8 @@ export const ContainerCadastro = styled.div`
   min-height: 100vh;
 
   @media (max-width: 555px) {
-        flex-direction: column;
-        }
+    flex-direction: column;
+  }
 `;
 
 export const SubContainerCadastro = styled.div`
@@ -78,8 +78,6 @@ export const H2Cadastro = styled.h2`
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  
- 
 `;
 
 export const UserIcone = styled.div`
@@ -117,14 +115,13 @@ export const Input = styled.input`
   padding-left: 8px;
   min-width: 308px;
   margin-bottom: ${(props) => (props.$lastinput ? "15px" : "0")};
-  &::placeholder{
-      font-weight: bold;
-    }
- 
+  &::placeholder {
+    font-weight: bold;
+  }
 
   @media (max-width: 555px) {
     min-width: 303px;
-    &::placeholder{
+    &::placeholder {
       font-size: 13px;
     }
   }
@@ -145,7 +142,7 @@ export const ContainerText = styled.div`
 `;
 
 export const P = styled.p`
-  margin: 15px 0;
+  margin: 15px 0 8px 0;
   font-size: 14px;
   font-weight: 700;
   margin-right: 5px;
@@ -156,7 +153,7 @@ export const LinkLogin = styled.a`
   text-decoration: none;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     color: #295971;
   }
 `;
@@ -165,6 +162,38 @@ export const ContainerLoginCom = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const CustomLoader = styled.div`
+  width: 32px;
+  height: 32px;
+  --c: radial-gradient(farthest-side, #5F98B4 92%, #0000);
+  background: 
+    var(--c) 50% 0, 
+    var(--c) 50% 100%, 
+    var(--c) 100% 50%, 
+    var(--c) 0 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  animation: s8 0.5s linear infinite;
+  position: relative;
+
+  &::before {    
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: 3px;
+    background: repeating-conic-gradient(#0000 0 35deg, #5F98B4 0 90deg);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 1px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 1px), #000 0);
+    border-radius: 50%;
+  }
+
+  @keyframes s8 { 
+    100% { transform: rotate(.5turn) }
+  }
 `;
 
 export const ButtonCadastro = styled.button`

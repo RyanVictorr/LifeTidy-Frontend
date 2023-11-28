@@ -23,7 +23,9 @@ import {
   ErrorText,
   Container,
   PasswordIcone,
-  EmailIcone
+  EmailIcone,
+  ContainerLoginCom,
+  CustomLoader,
 } from "./styles";
 
 const App = () => {
@@ -34,8 +36,7 @@ const App = () => {
 
   const navigate = useNavigate();
   const { setToken } = useAuth();
-  
-  
+
   const [formData, setFormData] = useState({
     email: "",
     senha: "",
@@ -50,24 +51,26 @@ const App = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+  const [isLoading, setIsLoading] = useState(false);
 
-  try {
-    const response = await axiosInstance.post(
-      'http://localhost:4000/usuarios/login',
-      {
-        email: formData.email,
-        senha: formData.senha,
-      }
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await axiosInstance.post(
+        "http://localhost:4000/usuarios/login",
+        {
+          email: formData.email,
+          senha: formData.senha,
+        }
+      );
 
       if (response.status === 200) {
-       
         localStorage.setItem("token", response.data.Token);
         setToken(response.data.Token);
         fetchTarefas();
-        navigate('/home');
+        navigate("/home");
       } else {
         console.error("Erro no login - código de status:", response.status);
         setError(
@@ -82,6 +85,8 @@ const App = () => {
       } else {
         setError("Erro desconhecido");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -95,37 +100,43 @@ const App = () => {
             </Link>
           </ContainerLogo>
           <ContainerInputs>
-          <Container>
-                <EmailIcone />
-                <Input
-                  type="email"
-                  placeholder="E-MAIL"
-                  required
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  maxLength={40}
-                />
-              </Container>
             <Container>
-                <PasswordIcone />
-                <Input
-                  type="password"
-                  placeholder="SENHA"
-                  required
-                  name="senha"
-                  value={formData.senha}
-                  onChange={handleChange}
-                  maxLength={30}
-                />
-              </Container>
+              <EmailIcone />
+              <Input
+                type="email"
+                placeholder="E-MAIL"
+                required
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                maxLength={40}
+              />
+            </Container>
+            <Container>
+              <PasswordIcone />
+              <Input
+                type="password"
+                placeholder="SENHA"
+                required
+                name="senha"
+                value={formData.senha}
+                onChange={handleChange}
+                maxLength={30}
+              />
+            </Container>
           </ContainerInputs>
           {error && <ErrorText>{error}</ErrorText>}
           <ContainerText>
             <PLogin>ESQUECEU A SENHA?</PLogin>
             <LinkSenha onClick={() => navigate("/senha")}>Recuperar</LinkSenha>
           </ContainerText>
-          <ButtonLogin type="submit">LOGIN</ButtonLogin>
+          <ContainerLoginCom>
+            {isLoading && <CustomLoader />}
+            <ButtonLogin type="submit" disabled={isLoading}>
+              LOGIN
+            </ButtonLogin>
+          </ContainerLoginCom>
+
           <ContainerTextBorda>
             <PInscrevaSe>NÃO TEM CADASTRO?</PInscrevaSe>
             <LinkInscrevaSe onClick={() => navigate("/cadastro")}>

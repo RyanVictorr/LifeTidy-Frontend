@@ -3,9 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Modal } from "react-bootstrap";
 
 export const CustomModal = styled(Modal)`
-  .modal-content {
-    border-radius: 25px; /* Ajuste o raio da borda conforme necessário */
-  }
 `;
 
 export const Dialog = styled.dialog`
@@ -116,14 +113,14 @@ export const TextArea = styled.textarea`
 `;
 
 export const ContainerImportancia = styled.div`
-  padding: 1em 0 0.7em 1em;
+  padding: 0.4em 0 0.7em 1em;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
 
 export const ContainerInicio = styled.div`
-  padding: 1em 0 0.7em 1em;
+  padding: 0.4em 0 0.7em 1em;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -137,14 +134,14 @@ export const ContainerInicioConclusaoHorario = styled.div`
 `;
 
 export const ContainerConclusao = styled.div`
-  padding: 1em 0 0.7em 1em;
+  padding: 0.4em 0 0.7em 1em;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
 
 export const ContainerDescricaoTarefa = styled.div`
-  padding: 1em 0 0.7em 1em;
+  padding: 0.4em 0 0.7em 1em;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -153,10 +150,11 @@ export const ContainerDescricaoTarefa = styled.div`
 export const DivButtonNovaTarefa = styled.div`
   justify-content: space-evenly;
   display: flex;
-  margin-top: 1em;
+  margin-top: 0.5em;
 `;
 
 export const ContainerCustomLoader = styled.div`
+height: 40px;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -172,7 +170,7 @@ export const CustomLoader = styled.div`
     var(--c) 50% 100%, 
     var(--c) 100% 50%, 
     var(--c) 0 50%;
-  background-size: 9px 9px;
+  background-size: 8px 8px;
   background-repeat: no-repeat;
   animation: s8 0.6s linear infinite;
   position: relative;
@@ -183,8 +181,8 @@ export const CustomLoader = styled.div`
     inset: 0;
     margin: 3px;
     background: repeating-conic-gradient(#0000 0 35deg, #5F98B4 0 90deg);
-    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
-    mask: radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 1px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 1px), #000 0);
     border-radius: 50%;
   }
 
@@ -204,6 +202,9 @@ export const ButtonCriarTarefa = styled.button`
   color: #fff;
   cursor: pointer;
   transition: 1.5s ease;
+  &:disabled {
+    cursor: not-allowed;
+  }
   &:hover {
     background-color: #2f6f8e;
   }

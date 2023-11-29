@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
-import "./customModalStyles.css"; // Importe o arquivo CSS
+import "./customModalStyles.css"; 
 import {
   ContainerAdicionarTarefa,
   ContainerH2Tarefa,
@@ -160,6 +160,7 @@ const NovaTarefaModal = ({ isOpen, closeModal }) => {
               id="tarefa"
               name="nome_tarefa"
               maxLength={50}
+              required
               value={formState.nome_tarefa}
               onChange={handleChange}
             ></TextArea>

@@ -2,6 +2,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 import { useState } from "react";
 import ModalExclusao from "../ModalExclusaoTarefa";
+import EditarTarefaModal from "../EditarTarefaModal";
 
 import {
   ContainerPaiLembretes,
@@ -22,12 +23,12 @@ import {
   ContainerCheckbox,
   PPrioridade,
   Container,
+  TarefasConcluidas,
 } from "./styles";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Tarefa = () => {
-  const { tarefas, token } = useAuth();
-
+  const { tarefas, token, fetchTarefas } = useAuth();
   //convertendo o formato da data para 'ano/mês/dia' (YYYY-MM-DD)
   const converterFormatoData = (data) => {
     const partesData = data.split("/");
@@ -36,13 +37,6 @@ const Tarefa = () => {
     }
     return data;
   };
-
-  // Ordenar as tarefas pelo prazo mais próximo
-  const tarefasOrdenadas = [...tarefas].sort((a, b) => {
-    const dataA = new Date(converterFormatoData(a.data_fim)).getTime();
-    const dataB = new Date(converterFormatoData(b.data_fim)).getTime();
-    return dataA - dataB;
-  });
 
   const [showModal, setShowModal] = useState(false);
   const [tarefaSelecionada, setTarefaSelecionada] = useState(null);
@@ -67,10 +61,59 @@ const Tarefa = () => {
     }
   };
 
+  const handleStatusChange = async (id, status) => {
+    try {
+      await axios.put(
+        "http://localhost:4000/tarefas/atualizarStatus",
+        {
+          id_tarefa: id,
+          status: status ? "concluida" : "",
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      fetchTarefas();
+    } catch (error) {
+      console.error("Não foi possível atualizar o status da tarefa", error);
+    }
+  };
+
+  const [showCompletedTasks, setShowCompletedTasks] = useState(false);
+
+  const toggleShowCompletedTasks = () => {
+    setShowCompletedTasks(!showCompletedTasks);
+  };
+
+  const tasksToShow = showCompletedTasks
+  ? [...tarefas].filter((tarefa) => tarefa.status === "concluida" || tarefa.status === "finalizada")
+  : [...tarefas].filter((tarefa) => tarefa.status !== "concluida" && tarefa.status !== "finalizada");
+
+const tasksToShowOrdenadas = tasksToShow.sort((a, b) => {
+  const dataA = new Date(converterFormatoData(a.data_fim)).getTime();
+  const dataB = new Date(converterFormatoData(b.data_fim)).getTime();
+  return dataA - dataB;
+});
+
+  //Editar Tarefas
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const openEditModal = (tarefa) => {
+    setTarefaSelecionada(tarefa);
+    setShowEditModal(true);
+  };
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
+  };
   return (
     <>
+      <TarefasConcluidas onClick={toggleShowCompletedTasks}>
+        {showCompletedTasks ? "Mostrar Pendentes" : "Mostrar Concluidas"}
+      </TarefasConcluidas>
       <ContainerPaiLembretes>
-        {tarefasOrdenadas.map((tarefa) => (
+        {tasksToShowOrdenadas.map((tarefa) => (
           <ContainerLembretes key={tarefa.id_tarefa}>
             <InformacoesLembretes>
               <Container>
@@ -89,7 +132,13 @@ const Tarefa = () => {
                 </Prazos>
               </Container>
               <ContainerCheckbox>
-                <Checkbox type="checkbox" />
+                <Checkbox
+                  type="checkbox"
+                  checked={tarefa.status === "concluida"}
+                  onChange={(e) =>
+                    handleStatusChange(tarefa.id_tarefa, e.target.checked)
+                  }
+                />
                 <H4Checkbox>FINALIZADO</H4Checkbox>
               </ContainerCheckbox>
             </InformacoesLembretes>
@@ -117,7 +166,10 @@ const Tarefa = () => {
                 icon={faTrash}
                 onClick={() => openModal(tarefa.id_tarefa)}
               />
-              <StyledIcon icon={faPencilAlt} />
+              <StyledIcon
+                icon={faPencilAlt}
+                onClick={() => openEditModal(tarefa)}
+              />
             </EditarExcluir>
           </ContainerLembretes>
         ))}
@@ -127,6 +179,13 @@ const Tarefa = () => {
           isOpen={true}
           closeModal={closeModal}
           handleExclusao={() => handleDelete(tarefaSelecionada)}
+        />
+      )}
+      {showEditModal && (
+        <EditarTarefaModal
+          isOpen={showEditModal}
+          closeModal={closeEditModal}
+          tarefa={tarefaSelecionada}
         />
       )}
     </>

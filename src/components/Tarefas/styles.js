@@ -6,6 +6,26 @@ export const ContainerPaiLembretes = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
 `;
+export const TarefasConcluidas = styled.button`
+height: 1.8em;
+padding: 0 6px;
+  border: none;
+  border-radius: 25px;
+  background-color: #0a3950;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: 1.5s ease;
+  position: relative;
+  bottom: 3.2em;
+    left: 11em;
+ 
+  &:hover {
+    background-color: #2f6f8e;
+  }
+
+`
 export const Container = styled.div``;
 export const ContainerLembretes = styled.div`
   background-color: #ffffff;

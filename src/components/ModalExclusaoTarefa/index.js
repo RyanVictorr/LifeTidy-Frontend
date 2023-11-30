@@ -43,8 +43,8 @@ const ExclusaoModal = ({ isOpen, closeModal, handleExclusao }) => {
       onHide={closeModal}
       dialogClassName="custom-modal-styles"
     >
-      <Container class="form-login div-recuperacao-senha">
-        <ContainerLogo class="div-logo div-logo-recuperacao">
+      <Container>
+        <ContainerLogo>
           <SubContainerLogo href="index.html">
             <ImageLogo src={logo} alt={"Logo-LifeTidy"} />
           </SubContainerLogo>

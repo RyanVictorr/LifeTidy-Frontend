@@ -61,6 +61,8 @@ export const AuthProvider = ({ children }) => {
     setToken("");
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <AuthContext.Provider
       value={{
@@ -75,7 +77,9 @@ export const AuthProvider = ({ children }) => {
         setTarefas,
         fetchTarefas,
         isActive,
-      setIsActive,
+        setIsActive,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       {children}

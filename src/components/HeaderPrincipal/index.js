@@ -24,8 +24,13 @@ import {
   ContainerSubMenu,
 } from "./styles";
 
-const Header = ({ openModal,openModalDesempenho }) => {
-    
+const Header = ({ openModal, openModalDesempenho }) => {
+  const { setSearchTerm } = useAuth();
+
+const handleSearch = (e) => {
+  setSearchTerm(e.target.value);
+};
+
   const navigate = useNavigate();
   const { userName, logout } = useAuth();
   const [showModal, setShowModal] = useState(false);
@@ -45,17 +50,15 @@ const Header = ({ openModal,openModalDesempenho }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:4000/usuarios/logout');
+      await axios.post("http://localhost:4000/usuarios/logout");
       logout();
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.error('Erro ao realizar logout:', error);
+      console.error("Erro ao realizar logout:", error);
       // Trate o erro conforme necessário
     }
   };
 
-  
-  
   return (
     <ContainerHeader>
       <ContainerLogo>
@@ -64,7 +67,12 @@ const Header = ({ openModal,openModalDesempenho }) => {
         </Link>
       </ContainerLogo>
       <ContainerButtons>
-        <InputPesquisa type="text" placeholder="PESQUISAR" />
+        <InputPesquisa
+          maxLength={40}
+          type="text"
+          placeholder="PESQUISAR TAREFAS"
+          onChange={handleSearch}
+        />
         <ContainerButtonsModal>
           <ButtonAdicionar onClick={openModal}></ButtonAdicionar>
           <ButtonAviso></ButtonAviso>
@@ -87,7 +95,10 @@ const Header = ({ openModal,openModalDesempenho }) => {
         </ContainerImgPerfil>
       </ContainerPerfil>
       <Modal isOpen={showModal} closeModal={toggleModal} />
-      <Desempenho isOpen={showModalDesempenho} closeModalDesempenho={toggleModalDesempenho} />
+      <Desempenho
+        isOpen={showModalDesempenho}
+        closeModalDesempenho={toggleModalDesempenho}
+      />
     </ContainerHeader>
   );
 };

@@ -52,7 +52,7 @@ const Tarefa = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete("http://localhost:4000/tarefas/apagar", {
+      await axios.delete("https://lifetidy.onrender.com/tarefas/apagar", {
         data: { id },
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -64,7 +64,7 @@ const Tarefa = () => {
   const handleStatusChange = async (id, status) => {
     try {
       await axios.put(
-        "http://localhost:4000/tarefas/atualizarStatus",
+        "https://lifetidy.onrender.com/tarefas/atualizarStatus",
         {
           id_tarefa: id,
           status: status ? "concluida" : "",

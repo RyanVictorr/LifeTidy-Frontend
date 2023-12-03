@@ -40,7 +40,7 @@ const Home = () => {
     } else {
       const authToken = token || localToken;
       axios
-        .get("http://localhost:4000/usuarios/buscarNome", {
+        .get("https://lifetidy.onrender.com/usuarios/buscarNome", {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
